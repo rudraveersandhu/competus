@@ -47,7 +47,6 @@ class UserModel extends ChangeNotifier {
     required strongest_subject,
     required weakest_subject,
 
-
   }) {
 
     this.id = id;
@@ -95,6 +94,20 @@ class UserModel extends ChangeNotifier {
     required double credits_left,
   }) {
     this.credits_left = credits_left;
+    notifyListeners();
+  }
+
+  void update_total_questions_solved({
+    required int total_questions_solved,
+  }) {
+    this.total_questions_solved = total_questions_solved;
+    notifyListeners();
+  }
+
+  void update_time_spent_practicing({
+    required int time_spent_practicing,
+  }) {
+    this.time_spent_practicing = time_spent_practicing;
     notifyListeners();
   }
 

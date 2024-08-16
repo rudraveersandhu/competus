@@ -49,6 +49,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   List<String> currentAnswers = [];
 
+  int _elapsedTime = 0;
+
+  int total_time = 0;
+
 
 
   @override
@@ -72,14 +76,18 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
 
-  void startTimer() async  {
+
+
+  void startTimer() async {
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(()  {
+      setState(() {
         if (_timeLeft > 0) {
           _timeLeft--;
+          _elapsedTime++;
+          print("Time elapsed: $_elapsedTime seconds");
         } else {
           _timer?.cancel();
-
+          print("Time's up!");
         }
       });
     });
@@ -861,16 +869,16 @@ class _QuestionScreenState extends State<QuestionScreen> {
       print("Added quiz in the db, now its : ${x}");
 
       print("added to databaase");
-      print(x);
+
       print(model.quizHistory);
       print(quiz.histroy_array);
       int total_questions = questions.length;
 
       await hahaha(x);
-
-      // add an update user function to save test history online
+      print("HAHAHA executed");
 
       await updateGraphData(total_questions, correct_answers);
+      print("update graph data executed");
 
     }catch(e){
       print("error updating history: $e");
@@ -879,6 +887,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   updateDatabase() async {
     var model = context.read<UserModel>();
+    var bx    = Provider.of<QandaHistoryModel>(context, listen: false);
     var content = {
       "name"    : model.name ,
       "dob"     : model.DOB ,
@@ -896,12 +905,18 @@ class _QuestionScreenState extends State<QuestionScreen> {
               return item.toIso8601String();
             }
             return item;
-          }).toList()
-      ).toList(),
-      "quiz_history"      : model.quizHistory
+          }).toList()).toList(),
+      "quiz_history"      : model.quizHistory,
+      "total_questions_solved" : bx.total_questions[0],
+      "time_spent_practicing": total_time,
     };
 
     await DronaService().updateUserData(model.id,content);
+
+    model.update_total_questions_solved(total_questions_solved: bx.total_questions[0]);
+    model.update_time_spent_practicing(time_spent_practicing: total_time);
+
+    print("Time elapsed: ${_timer}");
   }
 
   hahaha(List<QuizHistory> x) async {
@@ -913,63 +928,70 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   updateGraphData(int xtotal_questions, int xcorrect_answers) async {
+    var bx    = Provider.of<QandaHistoryModel>(context, listen: false);
+    var model = context.read<UserModel>();
+    var user     = await DronaService().getUserData(model.id);
+    var graphPerformanceData = user['graph_performance_data'];
+    int time = user['time_spent_practicing'];
 
-  var bx    = Provider.of<QandaHistoryModel>(context, listen: false);
-  var model = context.read<UserModel>();
-  var user     = await DronaService().getUserData(model.id);
 
-  var graphPerformanceData = user['graph_performance_data'];
+    List<int> total_questions = graphPerformanceData[0].cast<int>();
+    List<int> correct_answers = graphPerformanceData[1].cast<int>();
+    List<DateTime> total_days = graphPerformanceData[2].map<DateTime>((date) {
+      return DateTime.parse(date); // Assuming date is in a parsable format (e.g., "2024-08-16")
+    }).toList();
 
-  List<int> total_questions = graphPerformanceData[0].cast<int>();
-  List<int> correct_answers = graphPerformanceData[1].cast<int>();
-  List<DateTime> total_days = graphPerformanceData[2].cast<DateTime>();
+    print("Questions total :$total_questions");
+    print("Correct answer : $correct_answers");
+    print("Total days :${total_days.toString()}");
 
-  //final graph_box = await Hive.openBox('QandA');
+    //final graph_box = await Hive.openBox('QandA');
 
-  //List<int> total_questions = await graph_box.get('total_questions') ?? [0];
-  //List<int> correct_answers = await graph_box.get('correct_answers') ?? [0];
-  //List<DateTime> total_days = (await graph_box.get('days') as List<dynamic>?)?.map((e) => e as DateTime).toList() ?? [DateTime.now()];
+    //List<int> total_questions = await graph_box.get('total_questions') ?? [0];
+    //List<int> correct_answers = await graph_box.get('correct_answers') ?? [0];
+    //List<DateTime> total_days = (await graph_box.get('days') as List<dynamic>?)?.map((e) => e as DateTime).toList() ?? [DateTime.now()];
 
-  // fetch user data, particularly the above 3 filed , append data to it then update the quill db database
+    // fetch user data, particularly the above 3 filed , append data to it then update the quill db database
 
-  DateTime today = DateTime.now();
-  bool updated = false;
+    DateTime today = DateTime.now();
+    bool updated = false;
 
-  // Check if today's date is already in the list
-  for (int i = 0; i < total_days.length; i++) {
-    if (
-    total_days[i].year == today.year && total_days[i].month == today.month && total_days[i].day == today.day) {
-      total_questions[i] += xtotal_questions;
-      correct_answers[i] += xcorrect_answers;
-      updated = true;
-      break;
+    // Check if today's date is already in the list
+    for (int i = 0; i < total_days.length; i++) {
+      if (
+      total_days[i].year == today.year && total_days[i].month == today.month && total_days[i].day == today.day) {
+        total_questions[i] += xtotal_questions;
+        correct_answers[i] += xcorrect_answers;
+        updated = true;
+        break;
+      }
     }
-  }
-  if (!updated) {
-    total_questions.add(xtotal_questions);
-    correct_answers.add(xcorrect_answers);
-    total_days.add(today);
-  }
-  List<List<dynamic>> updated_graphPerformanceData = [
-    total_questions,
-    correct_answers,
-    total_days
-  ];
-  // await graph_box.put('total_questions', total_questions);
-  // await graph_box.put('correct_answers', correct_answers);
-  // await graph_box.put('days', total_days);
-  setState(() {
-      bx.answers         = correct_answers;
-      bx.total_questions = total_questions;
-      bx.days            = total_days;
-      context.read<UserModel>().updateGraphData(graph_performance_data: updated_graphPerformanceData);
-    });
+    if (!updated) {
+      total_questions.add(xtotal_questions);
+      correct_answers.add(xcorrect_answers);
+      total_days.add(today);
+    }
+    List<List<dynamic>> updated_graphPerformanceData = [
+      total_questions,
+      correct_answers,
+      total_days
+    ];
+    // await graph_box.put('total_questions', total_questions);
+    // await graph_box.put('correct_answers', correct_answers);
+    // await graph_box.put('days', total_days);
+    setState(() {
+        bx.answers         = correct_answers;
+        bx.total_questions = total_questions;
+        bx.days            = total_days;
+        context.read<UserModel>().updateGraphData(graph_performance_data: updated_graphPerformanceData);
+        total_time = time + _elapsedTime;
+      });
 
-  await updateDatabase();
+    await updateDatabase();
 
-  print("Days: ${bx.days}");
-  print("Answers: ${bx.answers}");
-  print("Total_Questions: ${bx.total_questions}");
+    print("Days: ${bx.days}");
+    print("Answers: ${bx.answers}");
+    print("Total_Questions: ${bx.total_questions}");
   }
 
 }

@@ -3,6 +3,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
 
+import '../../../model/qanda_history_model.dart';
 import '../../../model/user_model.dart';
 import '../../../new_screen.dart';
 import '../../../spline_charts.dart';
@@ -34,8 +35,25 @@ class _DashboardScreenState extends State<DashboardScreen>
   late ValueNotifier<double> valueNotifier;
 
   int _counter = 0;
-  int _counter1 = 329;
-  int _counter2 = 790;
+  late int _counter1 ;
+
+  late int _counter2 ;
+
+  // fetch_total_solved_Questions(){
+  //   var bx    = Provider.of<QandaHistoryModel>(context);
+  //   _counter1 = bx.total_questions[0];
+  //
+  // }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    var model = context.read<UserModel>();
+    print(model.total_questions_solved);
+
+    _counter1 = model.total_questions_solved;
+    _counter2 = model.time_spent_practicing;
+  }
 
   String name = '';
   @override
@@ -43,6 +61,7 @@ class _DashboardScreenState extends State<DashboardScreen>
     super.initState();
     var model = context.read<UserModel>();
     isShowingMainData = true;
+    //fetch_total_solved_Questions();
     _model = createModel(context, () => MYCardModel());
 
 

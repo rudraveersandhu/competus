@@ -472,8 +472,9 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (
-                          context) => const NotificationsSettingsWidget()),
+                      MaterialPageRoute(
+                          builder: (
+                            context) => const NotificationsSettingsWidget()),
                     );
                   },
                   child: Container(
@@ -827,86 +828,86 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                   ),
                 ),
 
-              if (!(Theme
-                  .of(context)
-                  .brightness == Brightness.dark))
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(
-                      0.0, 20.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      print_id();
-                      //await delete_account();
-                      // Navigator.pushReplacement(context, MaterialPageRoute(
-                      //     builder: (builder) => const LoginPageWidget(stream_count: 0,)));
-                      // setDarkModeSetting(context, ThemeMode.dark);
-                    },
-                    text: 'print user id and num',
-                    options: FFButtonOptions(
-                      width: 180.0,
-                      height: 40.0,
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          0.0, 0.0, 0.0, 0.0),
-                      iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Colors.blue,
-                      textStyle: FlutterFlowTheme
-                          .of(context)
-                          .titleSmall
-                          .override(
-                        fontFamily: 'Lexend',
-                        color: Colors.white,
-                        letterSpacing: 0.0,
-                      ),
-                      elevation: 2.0,
-                      borderSide: const BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                ),
-              if (Theme
-                  .of(context)
-                  .brightness == Brightness.dark)
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(
-                      0.0, 24.0, 0.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      print_id();
-                      // await delete_account();
-                      // Navigator.pushReplacement(context, MaterialPageRoute(
-                      //     builder: (builder) => const LoginPageWidget(stream_count: 0,)));
-                      //setDarkModeSetting(context, ThemeMode.light);
-                    },
-                    text: 'print user id and num',
-                    options: FFButtonOptions(
-                      width: 180.0,
-                      height: 40.0,
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          0.0, 0.0, 0.0, 0.0),
-                      iconPadding:
-                      const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Colors.blue,
-                      textStyle: FlutterFlowTheme
-                          .of(context)
-                          .titleSmall
-                          .override(
-                        fontFamily: 'Lexend',
-                        color: Colors.white,
-                        letterSpacing: 0.0,
-                      ),
-                      elevation: 2.0,
-                      borderSide: const BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(8.0),
-                    ),
-                  ),
-                ),
+              // if (!(Theme
+              //     .of(context)
+              //     .brightness == Brightness.dark))
+              //   Padding(
+              //     padding: const EdgeInsetsDirectional.fromSTEB(
+              //         0.0, 20.0, 0.0, 0.0),
+              //     child: FFButtonWidget(
+              //       onPressed: () async {
+              //         print_id();
+              //         //await delete_account();
+              //         // Navigator.pushReplacement(context, MaterialPageRoute(
+              //         //     builder: (builder) => const LoginPageWidget(stream_count: 0,)));
+              //         // setDarkModeSetting(context, ThemeMode.dark);
+              //       },
+              //       text: 'print user id and num',
+              //       options: FFButtonOptions(
+              //         width: 180.0,
+              //         height: 40.0,
+              //         padding: const EdgeInsetsDirectional.fromSTEB(
+              //             0.0, 0.0, 0.0, 0.0),
+              //         iconPadding:
+              //         const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              //         color: Colors.blue,
+              //         textStyle: FlutterFlowTheme
+              //             .of(context)
+              //             .titleSmall
+              //             .override(
+              //           fontFamily: 'Lexend',
+              //           color: Colors.white,
+              //           letterSpacing: 0.0,
+              //         ),
+              //         elevation: 2.0,
+              //         borderSide: const BorderSide(
+              //           color: Colors.transparent,
+              //           width: 1.0,
+              //         ),
+              //         borderRadius: BorderRadius.circular(8.0),
+              //       ),
+              //     ),
+              //   ),
+              // if (Theme
+              //     .of(context)
+              //     .brightness == Brightness.dark)
+              //   Padding(
+              //     padding: const EdgeInsetsDirectional.fromSTEB(
+              //         0.0, 24.0, 0.0, 0.0),
+              //     child: FFButtonWidget(
+              //       onPressed: () async {
+              //         print_id();
+              //         // await delete_account();
+              //         // Navigator.pushReplacement(context, MaterialPageRoute(
+              //         //     builder: (builder) => const LoginPageWidget(stream_count: 0,)));
+              //         //setDarkModeSetting(context, ThemeMode.light);
+              //       },
+              //       text: 'print user id and num',
+              //       options: FFButtonOptions(
+              //         width: 180.0,
+              //         height: 40.0,
+              //         padding: const EdgeInsetsDirectional.fromSTEB(
+              //             0.0, 0.0, 0.0, 0.0),
+              //         iconPadding:
+              //         const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              //         color: Colors.blue,
+              //         textStyle: FlutterFlowTheme
+              //             .of(context)
+              //             .titleSmall
+              //             .override(
+              //           fontFamily: 'Lexend',
+              //           color: Colors.white,
+              //           letterSpacing: 0.0,
+              //         ),
+              //         elevation: 2.0,
+              //         borderSide: const BorderSide(
+              //           color: Colors.transparent,
+              //           width: 1.0,
+              //         ),
+              //         borderRadius: BorderRadius.circular(8.0),
+              //       ),
+              //     ),
+              //   ),
             ],
           ),
         ),

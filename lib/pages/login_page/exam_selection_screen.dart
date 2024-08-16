@@ -378,7 +378,7 @@ class _ExamSelectionScreenState extends State<ExamSelectionScreen> with TickerPr
       List<List<dynamic>> graph_performance_data = [
         <int>[], // First list for integers
         <int>[], // Second list for integers
-        <DateTime>[] // Third list for DateTime objects
+        <DateTime>[] // Third list for DateTime object
       ];
 
       var content = {

@@ -164,6 +164,8 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
   get_user_data(String id) async {
 
+    final user_box = await Hive.openBox('user');
+
       var headers = {'Accept': 'application/json'};
       var request = http.Request('GET', Uri.parse('https://db.quilldb.io/users/$id'));
 
@@ -177,7 +179,36 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
         var jsonData = jsonDecode(data);
         data_to_model(jsonData);
       } else {
-        print("data else${response.reasonPhrase}");
+        var data = await response.stream.bytesToString();
+
+        var jsonData = jsonDecode(data);
+
+        print("data else${jsonData}");
+
+        print(jsonData['detail']);
+
+        if(jsonData['detail'].toString() == "404: User not found"){
+
+          await user_box.put('id','');
+
+          Navigator.pushReplacement(
+            context,
+            PageRouteBuilder(
+              pageBuilder: (context, animation, secondaryAnimation) => LoginPageWidget(stream_count: streamCount),
+              transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                const curve = Curves.ease;
+                var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
+                return FadeTransition(
+                  opacity: fadeAnimation,
+                  child: child,
+                );
+              },
+              transitionDuration: const Duration(milliseconds: 700), // Adjust duration to make it slower
+            ),
+          );
+
+        }
+
       }
 
   }
@@ -195,8 +226,8 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
     double credits_left = jsonData['credits_left'].toDouble();
     double credits_recharged = jsonData['credits_recharged'].toDouble();
     String profilePhoto = jsonData['profile_picture'] ?? '';
-    String total_questions_solved = jsonData['total_questions_solved'] ?? '';
-    String time_spent_practicing = jsonData['time_spent_practicing'] ?? '';
+    int total_questions_solved = jsonData['total_questions_solved'] ?? 0;
+    int time_spent_practicing = jsonData['time_spent_practicing'] ?? 0;
     String strongest_subject = jsonData['strongest_subject'] ?? '';
     String weakest_subject = jsonData['weakest_subject'] ?? '';
 
