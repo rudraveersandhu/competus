@@ -1,0 +1,580 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:1:1-62:12
+INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:1:1-62:12
+INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:1:1-62:12
+INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:1:1-62:12
+MERGED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-36:12
+MERGED from [:flutter_plugin_android_lifecycle] /Users/rudraveersingh/Downloads/my_drona/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:otpless_flutter] /Users/rudraveersingh/Downloads/my_drona/build/otpless_flutter/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:path_provider_android] /Users/rudraveersingh/Downloads/my_drona/build/path_provider_android/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:shared_preferences_android] /Users/rudraveersingh/Downloads/my_drona/build/shared_preferences_android/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:sqflite] /Users/rudraveersingh/Downloads/my_drona/build/sqflite/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:uni_links] /Users/rudraveersingh/Downloads/my_drona/build/uni_links/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-9:12
+MERGED from [:url_launcher_android] /Users/rudraveersingh/Downloads/my_drona/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:2:1-16:12
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/989e4d0de13b12c5c4be49bcee356337/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:17:1-33:12
+MERGED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:2:1-44:12
+MERGED from [com.whatsapp.otp:whatsapp-otp-android-sdk:0.1.0] /Users/rudraveersingh/.gradle/caches/transforms-3/3e907e774e0fc1a4ff395bdf982093c9/transformed/jetified-whatsapp-otp-android-sdk-0.1.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/rudraveersingh/.gradle/caches/transforms-3/d7b378d56f6204206454ec7037bcc844/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/rudraveersingh/.gradle/caches/transforms-3/90a34bd89c7d5f0a95eb4b0f87bc3d00/transformed/appcompat-1.6.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/9a51e1a57bfbbc6b06183017b0bed5f2/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /Users/rudraveersingh/.gradle/caches/transforms-3/8c764483a8a9a46b960622e780749317/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/54adf0c6053d4bfe8cc722e90f75e97d/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/63950d183395c01310ea7f09c7e4cff8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:16:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6d3acd695462a21cd42064a7727cdd9a/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:2:1-6:12
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/656e34bc1742cedec2be28a0d42bda03/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:16:1-26:12
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/rudraveersingh/.gradle/caches/transforms-3/4bd0a94489e162e3b1dc301250703179/transformed/fragment-1.3.6/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.9.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a64c198665e904dccee6b50a53d00d60/transformed/jetified-activity-1.9.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.browser:browser:1.6.0] /Users/rudraveersingh/.gradle/caches/transforms-3/ad716dd50575d3e5a6d81764ea58bab3/transformed/browser-1.6.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/a997f020658234b055d5410b29f79652/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.loader:loader:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/4e417e49d42e5cc8ae71459b201ffafd/transformed/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/0230174966c27d41fb73d5189f4fe9ce/transformed/jetified-emoji2-views-helper-1.2.0/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/6f538215211be17f79b30fe367fb4335/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/ef8c57a8fa0ee418b6e8d648b51296f2/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/f3324fbd5cb810649089c6b0a65d792e/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/a7c487f57ff7618bdbc1b9fabf582b9d/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/373b216864a98739e380d3d2babc3a4d/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/86f3fe1e39a95f7beb780ebfd16d88d8/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/df96ba04bb2304be89e89678f5990098/transformed/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/dda9d0c6e6dcb5d40f352bdab28a9310/transformed/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/82e07237718b81406fefb677f985bc6d/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/rudraveersingh/.gradle/caches/transforms-3/ce92053621f07df5cfcb943383dfd00a/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/rudraveersingh/.gradle/caches/transforms-3/e7ec3629c029202774d64883435298e6/transformed/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/41f8c6f7e7631ac41ee0cc8bd9de6368/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/rudraveersingh/.gradle/caches/transforms-3/f0f21dd4a56a7e2d0cf1c452521fc7a4/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/rudraveersingh/.gradle/caches/transforms-3/605507f3d4d475b6fb3f55c147f2a0d3/transformed/exifinterface-1.3.7/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6b82814dd5748c9d1e75fb6494061947/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/a5aa3c0d351e213670658d776783e776/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/516ad69a0f19af11644a7eb2dd4c3975/transformed/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/babbf5ba671b8e2df852f17342aac84a/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/208349e9690c77e5c701208bc66f2472/transformed/core-runtime-2.2.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/f7857c2fe2be85d9ddde0c94eae2f241/transformed/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/rudraveersingh/.gradle/caches/transforms-3/9b1547c769a6a0db828c0f79a7924f7b/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:2:1-7:12
+INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:1:1-62:12
+INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:1:1-62:12
+INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:1:1-62:12
+	package
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:2:5-40
+		INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:1:1-62:12
+		INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+	xmlns:tools
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:1:1-62:12
+		INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:4:5-66
+MERGED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:11:5-67
+MERGED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:4:22-64
+application
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:7:5-61:19
+MERGED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:5-34:19
+MERGED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:5-34:19
+MERGED from [:url_launcher_android] /Users/rudraveersingh/Downloads/my_drona/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-14:19
+MERGED from [:url_launcher_android] /Users/rudraveersingh/Downloads/my_drona/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-14:19
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:24:5-31:19
+MERGED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:33:5-42:19
+MERGED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:33:5-42:19
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:22:5-38:19
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/54adf0c6053d4bfe8cc722e90f75e97d/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/54adf0c6053d4bfe8cc722e90f75e97d/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/63950d183395c01310ea7f09c7e4cff8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/63950d183395c01310ea7f09c7e4cff8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6d3acd695462a21cd42064a7727cdd9a/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6d3acd695462a21cd42064a7727cdd9a/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/656e34bc1742cedec2be28a0d42bda03/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/656e34bc1742cedec2be28a0d42bda03/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:20:5-24:19
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/6f538215211be17f79b30fe367fb4335/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/6f538215211be17f79b30fe367fb4335/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:28:5-89
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6b82814dd5748c9d1e75fb6494061947/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6b82814dd5748c9d1e75fb6494061947/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/babbf5ba671b8e2df852f17342aac84a/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/babbf5ba671b8e2df852f17342aac84a/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
+	android:requestLegacyExternalStorage
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:11:9-52
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+	android:label
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:8:9-32
+	android:icon
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:10:9-43
+	tools:replace
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:9:9-38
+activity#com.legumtechnica.mydrona.MainActivity
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:13:9-51:20
+	android:launchMode
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:16:13-43
+	android:hardwareAccelerated
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:19:13-47
+	android:windowSoftInputMode
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:20:13-55
+	android:exported
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:15:13-36
+	android:configChanges
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:18:13-163
+	android:theme
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:17:13-47
+	android:name
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:14:13-41
+meta-data#io.flutter.embedding.android.NormalTheme
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:25:13-28:17
+	android:resource
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:27:15-52
+	android:name
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:26:15-70
+meta-data#io.flutter.embedding.android.SplashScreenDrawable
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:34:13-37:17
+	android:resource
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:36:15-61
+	android:name
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:35:15-79
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:38:13-41:29
+action#android.intent.action.MAIN
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:39:17-68
+	android:name
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:39:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:40:17-76
+	android:name
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:40:27-74
+meta-data#flutter_deeplinking_enabled
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:43:13-90
+	android:value
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:43:67-87
+	android:name
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:43:24-66
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:mydrona.com+data:scheme:mydrona
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:44:13-49:29
+	android:autoVerify
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:44:28-53
+action#android.intent.action.VIEW
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:45:17-69
+	android:name
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:45:25-66
+category#android.intent.category.DEFAULT
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:46:17-76
+	android:name
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:46:27-73
+category#android.intent.category.BROWSABLE
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:47:17-78
+	android:name
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:47:27-75
+data
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:48:17-77
+	android:host
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:48:48-74
+	android:scheme
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:48:23-47
+meta-data#flutterEmbedding
+ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:55:9-57:33
+	android:value
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:57:13-30
+	android:name
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml:56:13-44
+uses-sdk
+INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+MERGED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:6:5-8:41
+MERGED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:6:5-8:41
+MERGED from [:flutter_plugin_android_lifecycle] /Users/rudraveersingh/Downloads/my_drona/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:flutter_plugin_android_lifecycle] /Users/rudraveersingh/Downloads/my_drona/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:otpless_flutter] /Users/rudraveersingh/Downloads/my_drona/build/otpless_flutter/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:otpless_flutter] /Users/rudraveersingh/Downloads/my_drona/build/otpless_flutter/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /Users/rudraveersingh/Downloads/my_drona/build/path_provider_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:path_provider_android] /Users/rudraveersingh/Downloads/my_drona/build/path_provider_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:shared_preferences_android] /Users/rudraveersingh/Downloads/my_drona/build/shared_preferences_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:shared_preferences_android] /Users/rudraveersingh/Downloads/my_drona/build/shared_preferences_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] /Users/rudraveersingh/Downloads/my_drona/build/sqflite/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:sqflite] /Users/rudraveersingh/Downloads/my_drona/build/sqflite/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:uni_links] /Users/rudraveersingh/Downloads/my_drona/build/uni_links/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:uni_links] /Users/rudraveersingh/Downloads/my_drona/build/uni_links/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] /Users/rudraveersingh/Downloads/my_drona/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [:url_launcher_android] /Users/rudraveersingh/Downloads/my_drona/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/989e4d0de13b12c5c4be49bcee356337/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window-java:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/989e4d0de13b12c5c4be49bcee356337/transformed/jetified-window-java-1.0.0-beta04/AndroidManifest.xml:19:5-21:41
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.window:window:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:20:5-22:41
+MERGED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:6:5-9:64
+MERGED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:6:5-9:64
+MERGED from [com.whatsapp.otp:whatsapp-otp-android-sdk:0.1.0] /Users/rudraveersingh/.gradle/caches/transforms-3/3e907e774e0fc1a4ff395bdf982093c9/transformed/jetified-whatsapp-otp-android-sdk-0.1.0/AndroidManifest.xml:5:5-44
+MERGED from [com.whatsapp.otp:whatsapp-otp-android-sdk:0.1.0] /Users/rudraveersingh/.gradle/caches/transforms-3/3e907e774e0fc1a4ff395bdf982093c9/transformed/jetified-whatsapp-otp-android-sdk-0.1.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/rudraveersingh/.gradle/caches/transforms-3/d7b378d56f6204206454ec7037bcc844/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.6.1] /Users/rudraveersingh/.gradle/caches/transforms-3/d7b378d56f6204206454ec7037bcc844/transformed/jetified-appcompat-resources-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/rudraveersingh/.gradle/caches/transforms-3/90a34bd89c7d5f0a95eb4b0f87bc3d00/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.appcompat:appcompat:1.6.1] /Users/rudraveersingh/.gradle/caches/transforms-3/90a34bd89c7d5f0a95eb4b0f87bc3d00/transformed/appcompat-1.6.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/9a51e1a57bfbbc6b06183017b0bed5f2/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/9a51e1a57bfbbc6b06183017b0bed5f2/transformed/jetified-play-services-auth-api-phone-18.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /Users/rudraveersingh/.gradle/caches/transforms-3/8c764483a8a9a46b960622e780749317/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:18.0.4] /Users/rudraveersingh/.gradle/caches/transforms-3/8c764483a8a9a46b960622e780749317/transformed/jetified-play-services-auth-base-18.0.4/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/54adf0c6053d4bfe8cc722e90f75e97d/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-fido:20.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/54adf0c6053d4bfe8cc722e90f75e97d/transformed/jetified-play-services-fido-20.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/63950d183395c01310ea7f09c7e4cff8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-base:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/63950d183395c01310ea7f09c7e4cff8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6d3acd695462a21cd42064a7727cdd9a/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-tasks:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6d3acd695462a21cd42064a7727cdd9a/transformed/jetified-play-services-tasks-18.0.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/656e34bc1742cedec2be28a0d42bda03/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:18:5-43
+MERGED from [com.google.android.gms:play-services-basement:18.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/656e34bc1742cedec2be28a0d42bda03/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:18:5-43
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/rudraveersingh/.gradle/caches/transforms-3/4bd0a94489e162e3b1dc301250703179/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.6] /Users/rudraveersingh/.gradle/caches/transforms-3/4bd0a94489e162e3b1dc301250703179/transformed/fragment-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.9.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a64c198665e904dccee6b50a53d00d60/transformed/jetified-activity-1.9.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.9.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a64c198665e904dccee6b50a53d00d60/transformed/jetified-activity-1.9.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.browser:browser:1.6.0] /Users/rudraveersingh/.gradle/caches/transforms-3/ad716dd50575d3e5a6d81764ea58bab3/transformed/browser-1.6.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.browser:browser:1.6.0] /Users/rudraveersingh/.gradle/caches/transforms-3/ad716dd50575d3e5a6d81764ea58bab3/transformed/browser-1.6.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/a997f020658234b055d5410b29f79652/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/a997f020658234b055d5410b29f79652/transformed/coordinatorlayout-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.loader:loader:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/4e417e49d42e5cc8ae71459b201ffafd/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/4e417e49d42e5cc8ae71459b201ffafd/transformed/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/0230174966c27d41fb73d5189f4fe9ce/transformed/jetified-emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/0230174966c27d41fb73d5189f4fe9ce/transformed/jetified-emoji2-views-helper-1.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/6f538215211be17f79b30fe367fb4335/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/6f538215211be17f79b30fe367fb4335/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/ef8c57a8fa0ee418b6e8d648b51296f2/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/ef8c57a8fa0ee418b6e8d648b51296f2/transformed/lifecycle-livedata-core-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/f3324fbd5cb810649089c6b0a65d792e/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/f3324fbd5cb810649089c6b0a65d792e/transformed/lifecycle-livedata-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/a7c487f57ff7618bdbc1b9fabf582b9d/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/a7c487f57ff7618bdbc1b9fabf582b9d/transformed/lifecycle-viewmodel-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/373b216864a98739e380d3d2babc3a4d/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/373b216864a98739e380d3d2babc3a4d/transformed/jetified-lifecycle-viewmodel-savedstate-2.6.2/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/86f3fe1e39a95f7beb780ebfd16d88d8/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/86f3fe1e39a95f7beb780ebfd16d88d8/transformed/jetified-core-ktx-1.13.1/AndroidManifest.xml:5:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/df96ba04bb2304be89e89678f5990098/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/df96ba04bb2304be89e89678f5990098/transformed/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/dda9d0c6e6dcb5d40f352bdab28a9310/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/dda9d0c6e6dcb5d40f352bdab28a9310/transformed/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/82e07237718b81406fefb677f985bc6d/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/82e07237718b81406fefb677f985bc6d/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/rudraveersingh/.gradle/caches/transforms-3/ce92053621f07df5cfcb943383dfd00a/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /Users/rudraveersingh/.gradle/caches/transforms-3/ce92053621f07df5cfcb943383dfd00a/transformed/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/rudraveersingh/.gradle/caches/transforms-3/e7ec3629c029202774d64883435298e6/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /Users/rudraveersingh/.gradle/caches/transforms-3/e7ec3629c029202774d64883435298e6/transformed/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/41f8c6f7e7631ac41ee0cc8bd9de6368/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/41f8c6f7e7631ac41ee0cc8bd9de6368/transformed/lifecycle-runtime-2.6.2/AndroidManifest.xml:5:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/rudraveersingh/.gradle/caches/transforms-3/f0f21dd4a56a7e2d0cf1c452521fc7a4/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] /Users/rudraveersingh/.gradle/caches/transforms-3/f0f21dd4a56a7e2d0cf1c452521fc7a4/transformed/jetified-savedstate-1.2.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/rudraveersingh/.gradle/caches/transforms-3/605507f3d4d475b6fb3f55c147f2a0d3/transformed/exifinterface-1.3.7/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] /Users/rudraveersingh/.gradle/caches/transforms-3/605507f3d4d475b6fb3f55c147f2a0d3/transformed/exifinterface-1.3.7/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6b82814dd5748c9d1e75fb6494061947/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6b82814dd5748c9d1e75fb6494061947/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/a5aa3c0d351e213670658d776783e776/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/a5aa3c0d351e213670658d776783e776/transformed/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/516ad69a0f19af11644a7eb2dd4c3975/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/516ad69a0f19af11644a7eb2dd4c3975/transformed/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/babbf5ba671b8e2df852f17342aac84a/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/babbf5ba671b8e2df852f17342aac84a/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/208349e9690c77e5c701208bc66f2472/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/208349e9690c77e5c701208bc66f2472/transformed/core-runtime-2.2.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/f7857c2fe2be85d9ddde0c94eae2f241/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /Users/rudraveersingh/.gradle/caches/transforms-3/f7857c2fe2be85d9ddde0c94eae2f241/transformed/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/rudraveersingh/.gradle/caches/transforms-3/9b1547c769a6a0db828c0f79a7924f7b/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.0] /Users/rudraveersingh/.gradle/caches/transforms-3/9b1547c769a6a0db828c0f79a7924f7b/transformed/jetified-annotation-experimental-1.4.0/AndroidManifest.xml:5:5-44
+INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+	tools:overrideLibrary
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:9:9-61
+	android:targetSdkVersion
+		INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+		ADDED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/rudraveersingh/Downloads/my_drona/android/app/src/main/AndroidManifest.xml
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:9-19:20
+	android:grantUriPermissions
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-47
+	android:authorities
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-74
+	android:exported
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-37
+	android:name
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:16:13-18:75
+	android:resource
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:18:17-72
+	android:name
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:17:17-67
+service#com.google.android.gms.metadata.ModuleDependencies
+ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:21:9-33:19
+	android:enabled
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:23:13-36
+	android:exported
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:24:13-37
+	tools:ignore
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:25:13-40
+	android:name
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:22:13-78
+intent-filter#action:name:com.google.android.gms.metadata.MODULE_DEPENDENCIES
+ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:26:13-28:29
+action#com.google.android.gms.metadata.MODULE_DEPENDENCIES
+ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:27:17-94
+	android:name
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:27:25-91
+meta-data#photopicker_activity:0:required
+ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:30:13-32:36
+	android:value
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:32:17-33
+	android:name
+		ADDED from [:image_picker_android] /Users/rudraveersingh/Downloads/my_drona/build/image_picker_android/intermediates/merged_manifest/release/AndroidManifest.xml:31:17-63
+activity#io.flutter.plugins.urllauncher.WebViewActivity
+ADDED from [:url_launcher_android] /Users/rudraveersingh/Downloads/my_drona/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:9-13:74
+	android:exported
+		ADDED from [:url_launcher_android] /Users/rudraveersingh/Downloads/my_drona/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-37
+	android:theme
+		ADDED from [:url_launcher_android] /Users/rudraveersingh/Downloads/my_drona/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-71
+	android:name
+		ADDED from [:url_launcher_android] /Users/rudraveersingh/Downloads/my_drona/build/url_launcher_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-74
+uses-library#androidx.window.extensions
+ADDED from [androidx.window:window:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:25:9-27:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:26:13-54
+uses-library#androidx.window.sidecar
+ADDED from [androidx.window:window:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:28:9-30:40
+	android:required
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:30:13-37
+	android:name
+		ADDED from [androidx.window:window:1.0.0-beta04] /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/AndroidManifest.xml:29:13-51
+uses-permission#android.permission.GET_SIGNATURES
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:12:5-73
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:12:22-70
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:13:5-79
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:13:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:14:5-76
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:14:22-73
+uses-permission#android.permission.CHANGE_WIFI_STATE
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:15:5-76
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:15:22-73
+uses-permission#android.permission.CHANGE_NETWORK_STATE
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:16:5-79
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:16:22-76
+queries
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:18:5-31:15
+package#com.whatsapp
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:19:9-48
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:19:18-45
+package#com.whatsapp.w4b
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:20:9-52
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:20:18-49
+package#com.otpless.app
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:21:9-51
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:21:18-48
+package#org.telegram.messenger
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:22:9-58
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:22:18-55
+package#jp.naver.line.android
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:23:9-57
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:23:18-54
+package#com.michatapp.im
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:24:9-52
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:24:18-49
+package#com.discord
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:25:9-47
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:25:18-44
+package#com.Slack
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:26:9-45
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:26:18-42
+package#com.viber.voip
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:27:9-50
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:27:18-47
+package#org.thoughtcrime.securesms
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:28:9-62
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:28:18-59
+package#im.thebot.messenger
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:29:9-55
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:29:18-52
+package#com.truecaller
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:30:9-50
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:30:18-47
+receiver#com.otpless.main.OtplessZeroTapReceiver
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:34:9-41:20
+	android:enabled
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:36:13-35
+	android:exported
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:37:13-36
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:35:13-67
+intent-filter#action:name:com.whatsapp.otp.OTP_RETRIEVED
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:38:13-40:29
+action#com.whatsapp.otp.OTP_RETRIEVED
+ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:39:17-73
+	android:name
+		ADDED from [io.github.otpless-tech:otpless-android-sdk:2.3.8] /Users/rudraveersingh/.gradle/caches/transforms-3/4ad044621625a586534d6ce4559cbaa8/transformed/jetified-otpless-android-sdk-2.3.8/AndroidManifest.xml:39:25-70
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:33:9-37:51
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:35:13-36
+	android:visibleToInstantApps
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:37:13-48
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:20.7.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1ef5cb9bee0b288694db2e95c8b6e6ec/transformed/jetified-play-services-auth-20.7.0/AndroidManifest.xml:34:13-89
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/63950d183395c01310ea7f09c7e4cff8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/63950d183395c01310ea7f09c7e4cff8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/63950d183395c01310ea7f09c7e4cff8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:18.0.1] /Users/rudraveersingh/.gradle/caches/transforms-3/63950d183395c01310ea7f09c7e4cff8/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:18.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/656e34bc1742cedec2be28a0d42bda03/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:18.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/656e34bc1742cedec2be28a0d42bda03/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:18.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/656e34bc1742cedec2be28a0d42bda03/transformed/jetified-play-services-basement-18.2.0/AndroidManifest.xml:22:13-58
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/6f538215211be17f79b30fe367fb4335/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/6f538215211be17f79b30fe367fb4335/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6b82814dd5748c9d1e75fb6494061947/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/rudraveersingh/.gradle/caches/transforms-3/6b82814dd5748c9d1e75fb6494061947/transformed/jetified-startup-runtime-1.1.1/AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:25:13-67
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.2.0] /Users/rudraveersingh/.gradle/caches/transforms-3/1e7ddd9e6f4523db7b6c9f0cff8f676b/transformed/jetified-emoji2-1.2.0/AndroidManifest.xml:30:17-75
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/6f538215211be17f79b30fe367fb4335/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/6f538215211be17f79b30fe367fb4335/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.6.2] /Users/rudraveersingh/.gradle/caches/transforms-3/6f538215211be17f79b30fe367fb4335/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+permission#com.legumtechnica.mydrona.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+uses-permission#com.legumtechnica.mydrona.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] /Users/rudraveersingh/.gradle/caches/transforms-3/676b68251082f3f1c3cfcf781f3ae941/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] /Users/rudraveersingh/.gradle/caches/transforms-3/a61b5e517b0e44e25af8e7cec6de3cd3/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92

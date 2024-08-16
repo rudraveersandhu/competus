@@ -1,0 +1,12 @@
+name.avioli.unilinks.uni_links-jetified-window-1.0.0-beta04-0 /Users/rudraveersingh/.gradle/caches/transforms-3/11e656656b149d11d4f6a7d150c56188/transformed/jetified-window-1.0.0-beta04/res
+name.avioli.unilinks.uni_links-core-1.6.0-1 /Users/rudraveersingh/.gradle/caches/transforms-3/6c9006d64d9e340b1d33e9b4c99e7044/transformed/core-1.6.0/res
+name.avioli.unilinks.uni_links-jetified-annotation-experimental-1.1.0-2 /Users/rudraveersingh/.gradle/caches/transforms-3/93ab915f1bf7d8849c406ed3df723140/transformed/jetified-annotation-experimental-1.1.0/res
+name.avioli.unilinks.uni_links-jetified-window-java-1.0.0-beta04-3 /Users/rudraveersingh/.gradle/caches/transforms-3/989e4d0de13b12c5c4be49bcee356337/transformed/jetified-window-java-1.0.0-beta04/res
+name.avioli.unilinks.uni_links-main-4 /Users/rudraveersingh/.pub-cache/hosted/pub.dev/uni_links-0.5.1/android/src/main/res
+name.avioli.unilinks.uni_links-release-5 /Users/rudraveersingh/.pub-cache/hosted/pub.dev/uni_links-0.5.1/android/src/release/res
+name.avioli.unilinks.uni_links-pngs-6 /Users/rudraveersingh/Downloads/my_drona/build/uni_links/generated/res/pngs/release
+name.avioli.unilinks.uni_links-resValues-7 /Users/rudraveersingh/Downloads/my_drona/build/uni_links/generated/res/resValues/release
+name.avioli.unilinks.uni_links-rs-8 /Users/rudraveersingh/Downloads/my_drona/build/uni_links/generated/res/rs/release
+name.avioli.unilinks.uni_links-mergeReleaseResources-9 /Users/rudraveersingh/Downloads/my_drona/build/uni_links/intermediates/incremental/release/mergeReleaseResources/merged.dir
+name.avioli.unilinks.uni_links-mergeReleaseResources-10 /Users/rudraveersingh/Downloads/my_drona/build/uni_links/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+name.avioli.unilinks.uni_links-merged_res-11 /Users/rudraveersingh/Downloads/my_drona/build/uni_links/intermediates/merged_res/release
