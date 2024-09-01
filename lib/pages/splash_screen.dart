@@ -6,6 +6,7 @@ import 'package:my_drona/Main_Screen.dart';
 import 'package:my_drona/model/qanda_history_model.dart';
 import 'package:provider/provider.dart';
 import '../drona_service.dart';
+import '../main.dart';
 import '../model/QuizHistory.dart';
 import '../model/quiz_history_model.dart';
 import '../model/stream_model.dart';
@@ -13,7 +14,8 @@ import '../model/user_model.dart';
 import 'login_page/login_page_widget.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  final String plat;
+  const SplashScreen({super.key,required this.plat});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -45,7 +47,7 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
     try {
       await get_graph_data();
-      futureStreams = await DronaService().getStreams();
+      futureStreams = await DronaService(widget.plat).getStreams();
       streamCount = futureStreams.length;
     } catch (e) {
       print("Error Caught: $e");
@@ -126,28 +128,15 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
 
     if (id.isNotEmpty) {
       print("id is not empty: $id");
-      await get_user_data(id);
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            const curve = Curves.ease;
-            var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
-            return FadeTransition(
-              opacity: fadeAnimation,
-              child: child,
-            );
-          },
-          transitionDuration: const Duration(milliseconds: 700), // Adjust duration to make it slower
-        ),
-      );
+      var x = await DronaService(plat).getUserData(id);
+      await DronaService(plat).feedUserModel_ThenHomeScreen(context,x);
+
     } else if (id.isEmpty) {
       print("id is empty");
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => LoginPageWidget(stream_count: streamCount),
+          pageBuilder: (context, animation, secondaryAnimation) => LoginPageWidget(stream_count: streamCount, plat: widget.plat),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             const curve = Curves.ease;
             var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
@@ -156,62 +145,13 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
               child: child,
             );
           },
-          transitionDuration: const Duration(milliseconds: 700), // Adjust duration to make it slower
+          transitionDuration: const Duration(milliseconds: 1000),
         ),
       );
     }
   }
 
-  get_user_data(String id) async {
 
-    final user_box = await Hive.openBox('user');
-
-      var headers = {'Accept': 'application/json'};
-      var request = http.Request('GET', Uri.parse('https://db.quilldb.io/users/$id'));
-
-      request.headers.addAll(headers);
-
-      http.StreamedResponse response = await request.send();
-
-      if (response.statusCode == 200) {
-        var data = await response.stream.bytesToString();
-        print("data mil hai ye ${await data}");
-        var jsonData = jsonDecode(data);
-        data_to_model(jsonData);
-      } else {
-        var data = await response.stream.bytesToString();
-
-        var jsonData = jsonDecode(data);
-
-        print("data else${jsonData}");
-
-        print(jsonData['detail']);
-
-        if(jsonData['detail'].toString() == "404: User not found"){
-
-          await user_box.put('id','');
-
-          Navigator.pushReplacement(
-            context,
-            PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) => LoginPageWidget(stream_count: streamCount),
-              transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                const curve = Curves.ease;
-                var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
-                return FadeTransition(
-                  opacity: fadeAnimation,
-                  child: child,
-                );
-              },
-              transitionDuration: const Duration(milliseconds: 700), // Adjust duration to make it slower
-            ),
-          );
-
-        }
-
-      }
-
-  }
 
   data_to_model(Map<String, dynamic> jsonData) {
     var model = context.read<UserModel>();

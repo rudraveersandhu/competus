@@ -5,9 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:my_drona/model/subject.dart';
 import 'package:my_drona/pages/login_page/sub_section_selection.dart';
 import 'package:provider/provider.dart';
+import '../../Main_Screen.dart';
 import '../../drona_service.dart';
 import '../../flutter_flow/flutter_flow_theme.dart';
 import '../../flutter_flow/flutter_flow_widgets.dart';
+import '../../main.dart';
 import '../../model/quiz_history_model.dart';
 import '../../model/stream_model.dart';
 import '../../model/user_model.dart';
@@ -19,6 +21,7 @@ class ExamSelectionScreen extends StatefulWidget {
   final String email;
   final String dob;
   final String number;
+  final String plat;
 
   const ExamSelectionScreen({
     super.key,
@@ -26,7 +29,8 @@ class ExamSelectionScreen extends StatefulWidget {
     required this.name,
     required this.email,
     required this.dob,
-    required this.number
+    required this.number,
+    required this.plat,
   });
 
   @override
@@ -71,7 +75,7 @@ class _ExamSelectionScreenState extends State<ExamSelectionScreen> with TickerPr
   @override
   void initState() {
     super.initState();
-    futureStreams = DronaService().getStreams();
+    futureStreams = DronaService(widget.plat).getStreams();
 
     _fadeControllers = List<AnimationController>.generate(
       widget.streamCount, (int index) => AnimationController(
@@ -276,7 +280,7 @@ class _ExamSelectionScreenState extends State<ExamSelectionScreen> with TickerPr
                           child: FFButtonWidget(
                             onPressed: () async {
                               List<QuizHistory> quizHistory = [];
-                              if (_selectedSubject.isNotEmpty && (_selectedSubject != 'NET' || _selectedNETSub != null)) {
+                              if (_selectedSubject.isNotEmpty) {
         
                                 await updateDataOnQuillDb(
                                     widget.name,
@@ -290,35 +294,36 @@ class _ExamSelectionScreenState extends State<ExamSelectionScreen> with TickerPr
                                 );
         
         
-                              } else if(_selectedSubject == 'NET'){
-        
-                                  Navigator.push(
-                                    context,
-                                    PageRouteBuilder(
-                                      pageBuilder: (context, animation, secondaryAnimation) => SubSectionSelection(
-                                        name: widget.name,
-                                        email: widget.email,
-                                        dob: widget.dob,
-                                        number: widget.number,
-                                        selected_subject: _selectedSubject,
-                                        options: netItems,
-                                      ),
-                                      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-                                        const curve = Curves.ease;
-                                        var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
-        
-                                        return FadeTransition(
-                                          opacity: fadeAnimation,
-                                          child: child,
-                                        );
-                                      },
-                                      transitionDuration: const Duration(milliseconds: 500),
-                                    ),
-                                  );
-        
-        
-        
                               }
+                              // else if(_selectedSubject == 'NET'){
+                              //
+                              //     Navigator.push(
+                              //       context,
+                              //       PageRouteBuilder(
+                              //         pageBuilder: (context, animation, secondaryAnimation) => SubSectionSelection(
+                              //           name: widget.name,
+                              //           email: widget.email,
+                              //           dob: widget.dob,
+                              //           number: widget.number,
+                              //           selected_subject: _selectedSubject,
+                              //           options: netItems, plat: widget.plat,
+                              //         ),
+                              //         transitionsBuilder: (context, animation, secondaryAnimation, child) {
+                              //           const curve = Curves.ease;
+                              //           var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
+                              //
+                              //           return FadeTransition(
+                              //             opacity: fadeAnimation,
+                              //             child: child,
+                              //           );
+                              //         },
+                              //         transitionDuration: const Duration(milliseconds: 500),
+                              //       ),
+                              //     );
+                              //
+                              //
+                              //
+                              // }
         
                               else {
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -402,7 +407,7 @@ class _ExamSelectionScreenState extends State<ExamSelectionScreen> with TickerPr
 
       print(content);
 
-      await DronaService()
+      await DronaService(widget.plat)
           .create_user(
           content,
           context,
@@ -417,5 +422,25 @@ class _ExamSelectionScreenState extends State<ExamSelectionScreen> with TickerPr
           profilePicture,
           graph_performance_data
       );
+
+      // Future.delayed(Duration(seconds: 2), () {
+      //   Navigator.pushReplacement(
+      //     context,
+      //     PageRouteBuilder(
+      //       pageBuilder: (context, animation, secondaryAnimation) => MainScreen(plat: plat),
+      //       transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      //         const curve = Curves.ease;
+      //         var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
+      //
+      //         return FadeTransition(
+      //           opacity: fadeAnimation,
+      //           child: child,
+      //         );
+      //       },
+      //       transitionDuration: const Duration(milliseconds: 500),
+      //     ),
+      //   );
+      // });
+
   }
 }

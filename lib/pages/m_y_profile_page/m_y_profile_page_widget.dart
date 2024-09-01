@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:my_drona/pages/feedback_screen.dart';
 import 'package:path/path.dart' as path;
 import 'package:hive_flutter/adapters.dart';
 import 'package:image_picker/image_picker.dart';
@@ -6,7 +7,6 @@ import 'package:my_drona/drona_service.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import '../../model/user_model.dart';
-import '../change_password/change_password_widget.dart';
 import '../edit_profile/edit_profile_widget.dart';
 import '../login_page/login_page_widget.dart';
 import '../notifications_settings/notifications_settings_widget.dart';
@@ -21,8 +21,8 @@ import 'm_y_profile_page_model.dart';
 export 'm_y_profile_page_model.dart';
 
 class MYProfilePageWidget extends StatefulWidget {
-
-  MYProfilePageWidget({super.key});
+  final String plat;
+  MYProfilePageWidget({super.key,required this.plat});
 
   @override
   State<MYProfilePageWidget> createState() => _MYProfilePageWidgetState();
@@ -115,7 +115,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
 
     };
 
-    await DronaService().updateUserData(model.id,content);
+    await DronaService(widget.plat).updateUserData(model.id,content);
   }
 
   @override
@@ -235,7 +235,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                                 onPressed: () async {
                                   Navigator.pushReplacement(context,
                                       MaterialPageRoute(builder: (
-                                          builder) => const LoginPageWidget(stream_count: 0,)));
+                                          builder) =>  LoginPageWidget(stream_count: 0, plat: widget.plat,)));
                                 },
                               ),
                             ),
@@ -341,7 +341,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => EditProfileWidget(
-                          id: model.id,)
+                          id: model.id, plat: widget.plat,)
                     ),
                   );
                 },
@@ -391,7 +391,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      EditProfileWidget(id: model.id,)
+                                      EditProfileWidget(id: model.id, plat: widget.plat,)
                               ),
                             );
                           },
@@ -523,7 +523,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        EditProfileWidget(id: model.id,)
+                                        EditProfileWidget(id: model.id, plat: widget.plat,)
                                 ),
                               );
                             },
@@ -588,7 +588,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        EditProfileWidget(id: model.id,)
+                                        EditProfileWidget(id: model.id, plat: widget.plat,)
                                 ),
                               );
                             },
@@ -655,7 +655,76 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        EditProfileWidget(id: model.id,)
+                                        EditProfileWidget(
+                                          id: model.id,
+                                          plat: widget.plat,)
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>  FeedbackScreen(plat: widget.plat,)),
+                    );
+                  },
+                  child: Container(
+                    height: 53,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width - 43,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(
+                          color: Colors.blueGrey.shade100, width: 2),
+                    ),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 16.0, top: 14),
+                          child: Text(
+                            'Feedback',
+                            style: FlutterFlowTheme
+                                .of(context)
+                                .bodyMedium
+                                .override(
+                              fontFamily: 'Lexend',
+                              letterSpacing: 0.0,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 5.0),
+                          child: FlutterFlowIconButton(
+                            borderColor: Colors.transparent,
+                            borderRadius: 30.0,
+                            buttonSize: 46.0,
+                            icon: const Icon(
+                              Icons.chevron_right_rounded,
+                              color: Color(0xFF95A1AC),
+                              size: 25.0,
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        EditProfileWidget(
+                                          id: model.id,
+                                          plat: widget.plat,)
                                 ),
                               );
                             },
@@ -758,7 +827,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                     onPressed: () async {
                       await delete_account();
                       Navigator.pushReplacement(context, MaterialPageRoute(
-                          builder: (builder) => const LoginPageWidget(stream_count: 0,)));
+                          builder: (builder) =>  LoginPageWidget(stream_count: 0, plat: widget.plat,)));
                       // setDarkModeSetting(context, ThemeMode.dark);
                     },
                     text: 'Delete Account',
@@ -797,7 +866,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
                     onPressed: () async {
                       await delete_account();
                       Navigator.pushReplacement(context, MaterialPageRoute(
-                          builder: (builder) => const LoginPageWidget(stream_count: 0,)));
+                          builder: (builder) =>  LoginPageWidget(stream_count: 0, plat: widget.plat)));
 
                       //setDarkModeSetting(context, ThemeMode.light);
                     },
@@ -922,7 +991,7 @@ class _MYProfilePageWidgetState extends State<MYProfilePageWidget> {
     var model = context.read<UserModel>();
 
     await user_box.put('id','');
-    await DronaService().delete_user_account(model.id);
+    await DronaService(widget.plat).delete_user_account(model.id);
 
   }
 

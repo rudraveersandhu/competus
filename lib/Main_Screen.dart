@@ -7,8 +7,11 @@ import 'package:my_drona/pages/main_screens/dashboard_Screen/dashboard_Screen.da
 import 'package:my_drona/pages/main_screens/quiz_practice_screen/quiz_practice_screen.dart';
 import 'package:my_drona/pages/test_history/test_history.dart';
 
+import 'main.dart';
+
 class MainScreen extends StatefulWidget {
-  MainScreen({super.key});
+  final String plat;
+  MainScreen({super.key, required this.plat});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -71,7 +74,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       case 2:
         return const TestHistory();
       case 3:
-        return MYProfilePageWidget();
+        return MYProfilePageWidget(plat: widget.plat,);
       default:
         return const DashboardScreen();
     }
@@ -87,9 +90,9 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
 
         // Bottom navigation bar
         Positioned(
-            left: 10,
-            right: 10,
-            bottom: height > 700 ? 45 : 10,
+            left:  10,
+            right:  10,
+            bottom:  10,
             child: Container(
               height: 70,
               width: MediaQuery.of(context).size.width - 50,
@@ -107,8 +110,8 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
             )
         ),
         Positioned(
-          left: 0,
-          right: 0,
+          left: 10,
+          right: 10,
           bottom: 10,
           child: AnimatedBuilder(
             animation: _animation,

@@ -21,7 +21,7 @@ class _QuestionBlockState extends State<QuestionBlock> {
         height: (MediaQuery.of(context).size.height/2.5)/6,
         width: MediaQuery.of(context).size.width-100,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
+            borderRadius: BorderRadius.circular(10),
             color: widget.block_color,
             border: Border.all(
                 color: Colors.white,

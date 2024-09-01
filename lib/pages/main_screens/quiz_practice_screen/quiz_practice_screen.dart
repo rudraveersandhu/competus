@@ -1,6 +1,7 @@
 import 'package:loading_animations/loading_animations.dart';
 import 'package:provider/provider.dart';
 import '../../../drona_service.dart';
+import '../../../main.dart';
 import '../../../model/subject.dart';
 import '../../../model/user_model.dart';
 import '../../quiz_screens/quiz_introduction.dart';
@@ -18,8 +19,8 @@ class QuizPracticeScreen extends StatefulWidget {
 
 class _QuizPracticeScreenState extends State<QuizPracticeScreen>
     with TickerProviderStateMixin {
-  late List<Subject> filteredSubjects;
-  late Future<List<Subject>> futureSubjects;
+  late List<String> filteredSubjects;
+  late Future<List<String>> futureSubjects;
   List<String> questionCountValues = [];
 
   //List<String> questionCountValues = List.generate(5, (index) => "30 questions");
@@ -40,15 +41,19 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
   late List<String> dropdownValues; // List to store dropdown values for each option card
 
   getSubjects() async {
+
     var model = context.read<UserModel>();
+
     sub = model.subject;
+
   }
 
   @override
   void initState() {
     super.initState();
     getSubjects();
-    futureSubjects = DronaService().getallSubjects(sub);
+    futureSubjects = DronaService(plat).getTopicsForSubject(sub);
+
 
     searchController.addListener(() {
       setState(() {
@@ -57,10 +62,13 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
     });
 
     futureSubjects.then((subjects) {
+      // Initialize these lists based on the number of subjects
       questionCountValues = List.generate(subjects.length, (index) => "30 questions");
-      setState(() {}); // Update the UI with the new questionCountValues length
+      dropdownValues = List<String>.filled(subjects.length, 'Easy'); // Adjust based on subject count
+      setState(() {}); // Update the UI with the new list lengths
     });
 
+    // Initialize controllers and animations
     _fadeControllers = List<AnimationController>.generate(
       16,
           (int index) => AnimationController(
@@ -73,8 +81,6 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
         .map((controller) =>
         Tween<double>(begin: 0, end: 1).animate(controller))
         .toList();
-
-    dropdownValues = List<String>.filled(16, 'Easy'); // Initialize the dropdown values list
 
     animationsMap.addAll({
       // (Your animation map configuration)
@@ -89,8 +95,12 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
     );
   }
 
+
+
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -121,7 +131,7 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
                 child: TextField(
                   controller: searchController,
                   decoration: InputDecoration(
-                    hintText: '"Subjects:"',
+                    hintText: 'Search Subjects',
                     hintStyle: TextStyle(color: Colors.grey),
                     prefixIcon: Icon(
                       Icons.search,
@@ -144,8 +154,9 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
                   ),
                 ),
               ),
-              FutureBuilder<List<Subject>>(
+              FutureBuilder<List<String>>(
                 future: futureSubjects,
+
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Container(
@@ -162,7 +173,7 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
                     return Text('Error: ${snapshot.error}');
                   } else {
                     filteredSubjects = snapshot.data!.where((subject) {
-                      return subject.name
+                      return subject
                           .toLowerCase()
                           .contains(searchQuery.toLowerCase());
                     }).toList();
@@ -170,15 +181,19 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
                     return Container(
                       height: MediaQuery.of(context).size.height / 1.5,
                       child: ListView.builder(
-                        itemCount: filteredSubjects.length,
-                        itemBuilder: (context, index) {
-                          return optionCards(
-                              filteredSubjects[index].name,
-                              '100',
-                              index); // Pass the index
-                        },
-                      ),
-                    );
+                      itemCount: filteredSubjects.length,
+                      itemBuilder: (context, index) {
+                        if (index < dropdownValues.length && index < questionCountValues.length) {
+                          return optionCards(filteredSubjects[index], '100', index); // Pass the index
+                        } else {
+                          return SizedBox(
+                            height: 30,
+                          ); // Return an empty widget or handle gracefully
+                        }
+                      },
+                    )
+
+                  );
                   }
                 },
               ),
@@ -189,14 +204,14 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
     );
   }
 
-  Widget optionCards(String SubjectName, String marks, int index) {
+  Widget optionCards(String topic, String marks, int index) {
     return GestureDetector(
       onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
             builder: (builder) => QuizIntroduction(
-              subject: SubjectName,
+              topic: topic,
               level: dropdownValues[index],
               question_count: questionCountValues[index]
             ),
@@ -206,7 +221,7 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
       child: optionCard(
         context: context,
         title: "Total Questions : 30 ",
-        subtitle: SubjectName,
+        subtitle: topic,
         description1: "Max Marks : ",
         description2: "Max Marks : ",
         description3: marks,
@@ -215,9 +230,11 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
         dropdownValue: dropdownValues[index],
         onDropdownChanged: (String? newValue) {
           if (newValue != null) {
+
             setState(() {
               dropdownValues[index] = newValue;
             });
+
           }
         },
         questionCountValue: questionCountValues[index],
@@ -252,10 +269,10 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
         width: 100.0,
         decoration: BoxDecoration(
           color: backgroundColor,
-          borderRadius: BorderRadius.circular(8.0),
+          borderRadius: BorderRadius.circular(25.0),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.symmetric(vertical: 20.0,horizontal: 15),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -397,6 +414,5 @@ class _QuizPracticeScreenState extends State<QuizPracticeScreen>
       ),
     );
   }
-
 }
 

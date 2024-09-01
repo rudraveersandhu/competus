@@ -46,7 +46,7 @@
 		</data>
 		<key>FMDB_Privacy.bundle/Info.plist</key>
 		<data>
-		bpC9ib2f0IRjRH07HEchKQqA9V4=
+		cx7K7ms6yts+STEpVvo+2YVvGIg=
 		</data>
 		<key>FMDB_Privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		PWVkEd4ZvRnZya1t3vJ7yqUxE+Q=
+		XbMlCPqWIHpH1JGFPG67A3/hqoc=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -62,7 +62,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		GgTMRdsxW4aD7Jxzkihh/mphwvU=
+		afFpByjl9ZqQBS22zfpRhhySPOs=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
@@ -78,7 +78,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		W0ruCkGs5ZOUKisVYNV5s+AnGy0=
+		StVMtQj9HWpLEMWbmIfd2NWYYt4=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/1.gif</key>
 		<data>
@@ -226,7 +226,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		bIl4MxRLZyCAA1OqWKB+UHHJ2oY=
+		1E2+wPTT21gKNfUlS3j9bU+jPPc=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -346,11 +346,11 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		B73mnVtV79aZiRtFyy88uF5JxCw=
+		MZnAY97HZQiBhyEIoTp9qSeG0+Q=
 		</data>
 		<key>OtplessSDK.bundle/Info.plist</key>
 		<data>
-		BQiskfLPW2Q2Fdk/EOkctpBkVs4=
+		NB1tOt+jf/Heu3vLHgxmg270ptc=
 		</data>
 		<key>OtplessSDK.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -382,6 +382,14 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>device_info_plus_privacy.bundle/Info.plist</key>
+		<data>
+		RorEmrA/vDdNPP5NhJwO2nitEhY=
+		</data>
+		<key>device_info_plus_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		/LX0ZlwxwIAIhjZaDB8EiH5KpXA=
+		</data>
 		<key>en.lproj/InfoPlist.strings</key>
 		<dict>
 			<key>hash</key>
@@ -402,7 +410,7 @@
 		</dict>
 		<key>image_picker_ios_privacy.bundle/Info.plist</key>
 		<data>
-		NElRXnKRABzaW/CGFkIIndj96gs=
+		MePVfApJ1PvW8FpNtot+z/357S8=
 		</data>
 		<key>image_picker_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -410,7 +418,7 @@
 		</data>
 		<key>path_provider_foundation_privacy.bundle/Info.plist</key>
 		<data>
-		+6jfBN2HYlfqMff6hHiYbsIMlnY=
+		TqYufR/tC4aMQTFUviRGHT0t7mQ=
 		</data>
 		<key>path_provider_foundation_privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -418,7 +426,7 @@
 		</data>
 		<key>url_launcher_ios_privacy.bundle/Info.plist</key>
 		<data>
-		03pF5UCO7IJ5mPDMLGnPqxehH4k=
+		byyk9K9+ZXnk8r1mIsOBnPphZWU=
 		</data>
 		<key>url_launcher_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -501,7 +509,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			9ZE5JjGqtdo9b8TDrQVHtTu97b5G1jtf2WkpnYBhtWk=
+			0S/KBHsaQySv/7sqa+qY7uKhM6dMM+29d23Z68PNeHA=
 			</data>
 		</dict>
 		<key>FMDB_Privacy.bundle/PrivacyInfo.xcprivacy</key>
@@ -515,7 +523,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			swsG/gf11rxkpfDDTlXmnP/X+MFUge1Dsy0SrPnVcbU=
+			JMqVusabjfUlBKCzTtDkk3qeoWgkLapZ0EKHNgQiv90=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -529,7 +537,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			CQ2svTYJIzIHxprWNSmFIcTeXlfilMvzTKvD90aJIJI=
+			7GFTtc/DkpybBzJ1xCny+SSyymkz+I+jpL1GUgoCgXI=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
@@ -557,7 +565,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			AMrph/kIqW4VDi01czFf0K7o/ZoaH/73C5Rb9ZlX4/4=
+			uqqQ8CjF3+6rWVU2BUmZVcc9PYg5hyzfIPVm32+rz88=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/1.gif</key>
@@ -816,7 +824,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			aZiVuAflguZYp2udX7emnD/vFxfdqADobJtE1Uaij1A=
+			uZ4B33OgE2EVmEt/9x4KN+S2/I8+9JYxxTQmLg3SrHA=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -1026,7 +1034,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Jy0H/McXky2V2/w8+f3DDSAelBFWixcNoMtqml1iArs=
+			rw7PrRyf+j1vkVU8qu+iU7NUFhyXhXq1U8xdYvRBkQY=
 			</data>
 		</dict>
 		<key>OtplessSDK.bundle/PrivacyInfo.xcprivacy</key>
@@ -1061,6 +1069,20 @@
 			<key>optional</key>
 			<true/>
 		</dict>
+		<key>device_info_plus_privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			asEXNahG+BfGT7HpfETGcpoPJmWYKRK8LVIxQp8oJIc=
+			</data>
+		</dict>
+		<key>device_info_plus_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bS2g2NkwIn1CjB2TY7CtbjoS4sm2jFzilxWKdBL8jDE=
+			</data>
+		</dict>
 		<key>en.lproj/InfoPlist.strings</key>
 		<dict>
 			<key>hash2</key>
@@ -1083,7 +1105,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			bi6aIBxez+DPORRA06MXbRSmHOZGcoybXJR/ZnxeFOo=
+			uMt29XQRf/buboNtFfzw3FanWavymxmGkATXtmWGzIg=
 			</data>
 		</dict>
 		<key>image_picker_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>
@@ -1097,7 +1119,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			sKebknmSO94oBJW0Su7koEenW30Y3SHBoF7c0HCcNUg=
+			AjDb/1mSamQG1K+6aVejAWMmJSG6QcQpvol0TfDxjrs=
 			</data>
 		</dict>
 		<key>path_provider_foundation_privacy.bundle/PrivacyInfo.xcprivacy</key>
@@ -1111,7 +1133,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4ZRsnlMoom/AeKT8zVd5OVrEaAloQa2GENVKtYY/HrM=
+			97g9e5sz1HkKbovRWpX4RUgnokjAVfUxz5Xh1RCd7AU=
 			</data>
 		</dict>
 		<key>url_launcher_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>

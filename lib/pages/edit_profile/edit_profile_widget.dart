@@ -15,7 +15,12 @@ export 'edit_profile_model.dart';
 
 class EditProfileWidget extends StatefulWidget {
   String id;
-  EditProfileWidget({super.key, required this.id});
+  String plat;
+  EditProfileWidget({
+    super.key,
+    required this.id,
+    required this.plat,
+  });
 
   @override
   State<EditProfileWidget> createState() => _EditProfileWidgetState();
@@ -141,7 +146,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
 
     };
 
-    await DronaService().updateUserData(model.id,content);
+    await DronaService(widget.plat).updateUserData(model.id,content);
   }
 
 
@@ -672,7 +677,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
 
   updateModelInfo(content, String id) async {
     var model = context.read<UserModel>();
-    var data = await DronaService().updateUserData(id, content);
+    var data = await DronaService(widget.plat).updateUserData(id, content);
 
     String name = data['name'];  // Ensure name is a String
     String email = data['email'] ?? model.email;

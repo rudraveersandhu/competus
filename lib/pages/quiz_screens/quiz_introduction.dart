@@ -4,21 +4,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:my_drona/drona_service.dart';
+import 'package:my_drona/main.dart';
 import 'package:my_drona/pages/quiz_screens/question_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../model/answer_model.dart';
-import '../../model/question.dart';
+import '../../model/quiz.dart';
 import '../../model/user_model.dart';
 
 class QuizIntroduction extends StatefulWidget {
-  String subject;
+  String topic;
   String level;
   String question_count;
 
   QuizIntroduction({
     super.key,
-    required this.subject,
+    required this.topic,
     required this.level,
     required this.question_count,
   });
@@ -29,13 +30,14 @@ class QuizIntroduction extends StatefulWidget {
 
 class _QuizIntroductionState extends State<QuizIntroduction> {
   List<String> questions = [];
-  List<String> correct_answers = [];
+  List<String> correct_answer = [];
   List<List<String>> answers = [];
   bool isLoading = false;
   int ques_count = 0;
   int second_per_ques = 0;
 
   Future<void> _loadQuestions() async {
+    var model = context.read<UserModel>();
     switch (widget.question_count) {
       case "30 questions":
         ques_count =  30;
@@ -58,44 +60,65 @@ class _QuizIntroductionState extends State<QuizIntroduction> {
         throw ArgumentError("Invalid question count string: ${widget.level}");
     }
 
-    print("Question count is: $ques_count");
+    //print("Question count is: $ques_count");
 
     setState(() {
       isLoading = true;
     });
 
-    List<Map<String, dynamic>> fetchedQuestionsData = await DronaService().fetchQuestions(ques_count) ?? [];
-    //print("Fetched question json: $fetchedQuestionsData");
+    List<Map<String, dynamic>> fetchedQuestionsData = await DronaService(plat).fetchAPiQuestions(ques_count,model.subject,widget.topic);
+    //List<Map<String, dynamic>> fetchedQuestionsData = await DronaService(plat).fetchAPiQuestions(3,model.subject,widget.topic);
+
 
     questions = fetchedQuestionsData.map((questionData) {
       return questionData['question'] as String;
     }).toList();
 
+    // answers = fetchedQuestionsData.map((questionData) {
+    //   return questionData['options'] as List<String>;
+    // }).toList();
+
     answers = fetchedQuestionsData.map((questionData) {
-      return [
-        questionData['optionA'] as String,
-        questionData['optionB'] as String,
-        questionData['optionC'] as String,
-        questionData['optionD'] as String,
-      ];
+      return (questionData['options'] as List<dynamic>).map((option) {
+        return option.toString();
+      }).toList();
     }).toList();
 
-    correct_answers = fetchedQuestionsData.map((questionData) {
-      return questionData['correctAnswer'] as String;
+
+    correct_answer = fetchedQuestionsData.map((questionData) {
+      return questionData['correct_answer'] as String;
     }).toList();
 
     setState(() {
       isLoading = false;
     });
 
+    print(correct_answer);
+
     //print(answers);
   }
+
+  // Future<List<Quiz>> fetchQuizzes() async {
+  //   var model = context.read<UserModel>();
+  //   // Fetch the API response which should be a Map<String, dynamic>
+  //   final List<Map<String, dynamic>> response = await DronaService(plat).fetchAPiQuestions(1, model.subject, widget.topic);
+  //
+  //   // Extract the 'quiz' key which should be a List<Map<String, dynamic>>
+  //   if (response.containsKey('quiz') && response['quiz'] is List<dynamic>) {
+  //     final List<Map<String, dynamic>> quizJson = List<Map<String, dynamic>>.from(response['quiz']);
+  //
+  //     // Convert each item in the 'quiz' list to a Quiz instance
+  //     final quizzes = quizJson.map((json) => Quiz.fromJson(json)).toList();
+  //     print(quizzes);
+  //     return quizzes;
+  //   } else {
+  //     throw Exception('Invalid response format');
+  //   }
+  // }
 
   @override
   void initState() {
     super.initState();
-    print(widget.level);
-    print(widget.question_count);
     _loadQuestions();
   }
 
@@ -103,7 +126,7 @@ class _QuizIntroductionState extends State<QuizIntroduction> {
   Widget build(BuildContext context) {
     var question = Provider.of<AnswerModel>(context);
     var height = MediaQuery.of(context).size.height;
-    print(height);
+    //print(height);
 
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
@@ -152,7 +175,7 @@ class _QuizIntroductionState extends State<QuizIntroduction> {
                                 ),
                                 child: Stack(
                                   children: [
-                                    Positioned(
+                                    const Positioned(
                                       top: 20,
                                       left: 0,
                                       right: 0,
@@ -211,7 +234,7 @@ class _QuizIntroductionState extends State<QuizIntroduction> {
                                               setState(() {
                                                 isLoading = true;
                                               });
-                                              utilize_credits();
+                                              await utilize_credits();
 
                                               //('Loading questions before navigating to question screen');
                                               //await _loadQuestions(widget.question_count);
@@ -219,10 +242,10 @@ class _QuizIntroductionState extends State<QuizIntroduction> {
                                               //print('Navigating to question screen');
                                               Navigator.push(context,
                                                   MaterialPageRoute(builder: (builder) => QuestionScreen(
-                                                  subject: widget.subject,
+                                                  subject: widget.topic,
                                                   questions: questions,
                                                   answers: answers,
-                                                  correct_answers: correct_answers,
+                                                  correct_answers: correct_answer,
                                                   time_limit: ques_count * second_per_ques,
                                                       level: widget.level
                                                   )
@@ -310,7 +333,7 @@ class _QuizIntroductionState extends State<QuizIntroduction> {
       "credits_left"      : model.credits_left,
     };
 
-    await DronaService().updateUserData(model.id,content);
+    await DronaService(plat).updateUserData(model.id,content);
   }
 
 }

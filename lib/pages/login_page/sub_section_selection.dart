@@ -17,6 +17,7 @@ class SubSectionSelection extends StatefulWidget {
   final String number;
   final String selected_subject;
   final int options;
+  final String plat;
 
   const SubSectionSelection({
     super.key,
@@ -25,7 +26,8 @@ class SubSectionSelection extends StatefulWidget {
     required this.dob,
     required this.number,
     required this.selected_subject,
-    required this.options
+    required this.options,
+    required this.plat,
   });
 
   @override
@@ -58,7 +60,7 @@ class _SubSectionSelectionState extends State<SubSectionSelection> with TickerPr
   @override
   void initState() {
     super.initState();
-    futureSubjects = DronaService().getSubjects();
+    futureSubjects = DronaService(widget.plat).getSubjects();
 
     _fadeControllers = List<AnimationController>.generate(
       16, (int index) => AnimationController(
@@ -303,7 +305,7 @@ class _SubSectionSelectionState extends State<SubSectionSelection> with TickerPr
                                       Navigator.pushReplacement(
                                         context,
                                         PageRouteBuilder(
-                                          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(),
+                                          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(plat: widget.plat,),
                                           transitionsBuilder: (context, animation, secondaryAnimation, child) {
                                             const curve = Curves.ease;
                                             var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
@@ -399,7 +401,7 @@ class _SubSectionSelectionState extends State<SubSectionSelection> with TickerPr
       "weakest_subject" : 'Less-Data'
     };
 
-    await DronaService()
+    await DronaService(widget.plat)
         .create_user(
         content,
         context,

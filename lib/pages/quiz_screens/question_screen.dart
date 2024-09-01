@@ -8,6 +8,7 @@ import 'package:my_drona/drona_service.dart';
 import 'package:my_drona/model/QuizHistory.dart';
 import 'package:provider/provider.dart';
 import '../../components/QuestionBlock.dart';
+import '../../main.dart';
 import '../../model/answer_model.dart';
 import '../../model/qanda_history_model.dart';
 import '../../model/quiz_history_model.dart';
@@ -84,10 +85,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
         if (_timeLeft > 0) {
           _timeLeft--;
           _elapsedTime++;
-          print("Time elapsed: $_elapsedTime seconds");
+          //print("Time elapsed: $_elapsedTime seconds");
         } else {
           _timer?.cancel();
-          print("Time's up!");
+          //print("Time's up!");
         }
       });
     });
@@ -140,7 +141,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                       height: 45,
                       width: 100,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(10),
                         color: Colors.black54,
                         border: Border.all(color: Colors.white54),
                       ),
@@ -175,7 +176,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                               });
                             },
                             itemBuilder: (context, index) {
-                              print(index);
+                              //print(index);
                               return buildQuestionPage(context, widget.questions[index], question, index);
                             },
                           ),
@@ -265,15 +266,18 @@ class _QuestionScreenState extends State<QuestionScreen> {
                           )
                               : GestureDetector(
                             onTap: () async {
+
                               saveAnswers();
+                              show_loading();
                               print(user_answers);
                               print(user_answers.length);
 
                               print("Saving last answer");
                               Provider.of<AnswerModel>(context, listen: false).all_false();
-                              selected_answer = '0';
+
                               await updateQuizHistory();
                               test_finished();
+                              selected_answer = '0';
                             },
                             child: Container(
                               height: 45,
@@ -312,7 +316,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                           width: MediaQuery.of(context).size.width / 3,
                           decoration: BoxDecoration(
                               color: Colors.black54,
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(10),
                               border: Border.all(color: Colors.white, width: .5)),
                           child: Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -383,7 +387,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
           width: MediaQuery.of(context).size.width * .85 ,
           decoration: BoxDecoration(
               color: Colors.black54,
-              borderRadius: BorderRadius.circular(35)),
+              borderRadius: BorderRadius.circular(15)),
           child: Stack(
               children: [
                   Positioned(
@@ -729,6 +733,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                         Navigator.of(context).pop(); // Close the dialog
                         Navigator.of(context).pop(); // Close the QuestionScreen
                         Navigator.of(context).pop(); // Close the Instruction screen
+                        Navigator.of(context).pop(); // Close the Instruction screen
                       },
                       child: Container(
                         child: Text('Back to Homepage',
@@ -747,7 +752,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   saveAnswers(){
-    user_answers.add(selected_answer);
+
     Provider.of<AnswerModel>(context, listen: false).all_false();
 
     String caseValue = selected_answer; // This can be 'a', 'b', 'c', or 'd'
@@ -775,8 +780,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
         break;
 
       default:
-        user_answer = "null"; // Optional: handle the default case
+        user_answer = "0"; // Optional: handle the default case
     }
+
+    user_answers.add(user_answer);
 
     print("answer being added: $user_answer");
 
@@ -811,7 +818,6 @@ class _QuestionScreenState extends State<QuestionScreen> {
   data_to_model(Map<String, dynamic> jsonData) {
     var model = context.read<UserModel>();
 
-    // Parse quiz history
     List<QuizHistory> testHistory = (jsonData['quiz_history'] as List)
         .map((item) => QuizHistory.fromJson(item))
         .toList();
@@ -828,14 +834,16 @@ class _QuestionScreenState extends State<QuestionScreen> {
     double marks = 0;
     int correct_answers = 0;
 
+    print('');
+
     try{
 
-      for (int i = 0; i < widget.questions.length-1; i++) {
+      for (int i = 0; i < widget.questions.length; i++) {
         questions.add(
             Question(
               questionText: widget.questions[i],
               options: widget.answers[i],
-              correctAnswer: widget.correct_answers[i], // Assuming the first option is the correct answer, update accordingly
+              correctAnswer: widget.correct_answers[i],
             )
         );
 
@@ -874,7 +882,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
       print(quiz.histroy_array);
       int total_questions = questions.length;
 
-      await hahaha(x);
+      await updateQuizHistoryState(x);
       print("HAHAHA executed");
 
       await updateGraphData(total_questions, correct_answers);
@@ -911,26 +919,26 @@ class _QuestionScreenState extends State<QuestionScreen> {
       "time_spent_practicing": total_time,
     };
 
-    await DronaService().updateUserData(model.id,content);
+    await DronaService(plat).updateUserData(model.id,content);
 
     model.update_total_questions_solved(total_questions_solved: bx.total_questions[0]);
     model.update_time_spent_practicing(time_spent_practicing: total_time);
 
-    print("Time elapsed: ${_timer}");
+    //print("Time elapsed: ${_timer}");
   }
 
-  hahaha(List<QuizHistory> x) async {
+  updateQuizHistoryState(List<QuizHistory> x) async {
     setState(() {
       context.read<UserModel>().updateTestHistory(quizHistory: x);
       Provider.of<Quizhistory>(context, listen: false).updateQuizHistory(histroy_array: x);
     });
-    print("added successfully: $x");
+    //print("added successfully: $x");
   }
 
   updateGraphData(int xtotal_questions, int xcorrect_answers) async {
     var bx    = Provider.of<QandaHistoryModel>(context, listen: false);
     var model = context.read<UserModel>();
-    var user     = await DronaService().getUserData(model.id);
+    var user     = await DronaService(plat).getUserData(model.id);
     var graphPerformanceData = user['graph_performance_data'];
     int time = user['time_spent_practicing'];
 
@@ -941,9 +949,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
       return DateTime.parse(date); // Assuming date is in a parsable format (e.g., "2024-08-16")
     }).toList();
 
-    print("Questions total :$total_questions");
-    print("Correct answer : $correct_answers");
-    print("Total days :${total_days.toString()}");
+    //print("Questions total :$total_questions");
+    //print("Correct answer : $correct_answers");
+    //print("Total days :${total_days.toString()}");
 
     //final graph_box = await Hive.openBox('QandA');
 
@@ -989,9 +997,53 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
     await updateDatabase();
 
-    print("Days: ${bx.days}");
-    print("Answers: ${bx.answers}");
-    print("Total_Questions: ${bx.total_questions}");
+    //print("Days: ${bx.days}");
+    //print("Answers: ${bx.answers}");
+    //print("Total_Questions: ${bx.total_questions}");
+  }
+
+  show_loading(){
+    return showDialog(
+      context: context,
+      barrierDismissible: false, // Prevents dismissing the dialog by tapping outside
+      builder: (BuildContext context) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20.0), // Curved corners
+          ),
+          //backgroundColor: Colors.black, // Transparent background
+          child: Container(
+            padding: EdgeInsets.all(16.0),
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(.85), // Semi-transparent white background
+              borderRadius: BorderRadius.circular(20.0),
+              shape: BoxShape.rectangle
+            ),
+            width: 300.0, // Set a fixed width for the container
+            height: 120,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                const Text(
+                  'Submitting Test ..',
+                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300,color: Colors.white),
+                ),
+                SizedBox(height: 0.0),
+                Container(
+                  height: 30,
+                  width: 30,
+                  child: CircularProgressIndicator(
+                    color: Color(0xFF00968A),
+                  )
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+
   }
 
 }

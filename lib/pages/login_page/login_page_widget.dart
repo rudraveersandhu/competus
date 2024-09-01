@@ -10,7 +10,12 @@ export 'login_page_model.dart';
 
 class LoginPageWidget extends StatefulWidget {
   final int stream_count;
-  const LoginPageWidget({super.key,required this.stream_count});
+  final String plat;
+  const LoginPageWidget({
+    super.key,
+    required this.stream_count,
+    required this.plat
+  });
 
   @override
   State<LoginPageWidget> createState() => _LoginPageWidgetState();
@@ -26,7 +31,6 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   final TextEditingController _phoneController = TextEditingController();
   //final TextEditingController _codeController = TextEditingController();
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
 
   @override
   void initState() {
@@ -44,6 +48,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final screen_width = MediaQuery.of(context).size.width;
+    print(screen_width);
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -97,10 +103,12 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         24.0, 0.0, 24.0, 0.0),
                     child: SingleChildScrollView(
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Row(
                             mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: screen_width > 500 ? MainAxisAlignment.center : MainAxisAlignment.start,
                             children: [
                               Text(
                                 'Welcome',
@@ -120,6 +128,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                 0.0, 12.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: screen_width > 500 ? MainAxisAlignment.center : MainAxisAlignment.start,
+
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
@@ -137,6 +147,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             ),
                           ),
                           Container(
+                              width: screen_width > 500 ? 500 : null,
                             decoration: const BoxDecoration(),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
@@ -218,15 +229,64 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               ),
                             ),
                           ),
-                          Row(
+                          screen_width > 500 ? Padding(
+                            padding: const EdgeInsets.only(top: 20.0,right: 0),
+                            child: FFButtonWidget(
+
+                              onPressed: () {
+                                _validateNumber(_phoneController.text);
+                                if(check){
+                                  showWaiting(context);
+                                  start_verification(_phoneController.text);
+                                }else{
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text('Verification failed. Fill all the details'),
+                                      backgroundColor: Colors.red,
+                                    ),
+                                  );
+
+                                }
+                                print('Button-Login pressed ...');
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                'qbmoi1av' /* Login */,
+                              ),
+                              options: FFButtonOptions(
+                                width: screen_width > 500 ? 500 : MediaQuery.of(context).size.width-50,
+                                height: 50.0,
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                iconPadding:
+                                const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color:
+                                FlutterFlowTheme.of(context).primary,
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
+                                elevation: 3.0,
+                                borderSide: const BorderSide(
+                                  color: Colors.transparent,
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                            ),
+                          )
+                              : Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
+                            MainAxisAlignment.spaceBetween,
                             children: [
-                             Container(),
+                              Container(),
                               Padding(
                                 padding: const EdgeInsets.only(top: 20.0,right: 0),
                                 child: FFButtonWidget(
+
                                   onPressed: () {
                                     _validateNumber(_phoneController.text);
                                     if(check){
@@ -247,21 +307,21 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     'qbmoi1av' /* Login */,
                                   ),
                                   options: FFButtonOptions(
-                                    width: MediaQuery.of(context).size.width-50,
+                                    width: screen_width > 500 ? 300 : MediaQuery.of(context).size.width-50,
                                     height: 50.0,
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
                                     iconPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 0.0),
+                                    const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
                                     color:
-                                        FlutterFlowTheme.of(context).primary,
+                                    FlutterFlowTheme.of(context).primary,
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
-                                          fontFamily: 'Lexend',
-                                          letterSpacing: 0.0,
-                                        ),
+                                      fontFamily: 'Lexend',
+                                      letterSpacing: 0.0,
+                                    ),
                                     elevation: 3.0,
                                     borderSide: const BorderSide(
                                       color: Colors.transparent,
@@ -272,7 +332,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                 ),
                               ),
                             ],
-                          ),
+                          )
                         ],
                       ),
                     ),
@@ -298,8 +358,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   }
 
   start_verification(String pnum) async {
-    await DronaService().phoneAuth(pnum,context,widget.stream_count);
-    await _launchWhatsApp();
+    await DronaService(widget.plat).phoneAuth(pnum,context,widget.stream_count);
+    widget.plat != 'web' ? await _launchWhatsApp() : null;
   }
 
   _launchWhatsApp() async {

@@ -1,3 +1,7 @@
+import 'dart:io';
+
+import 'package:device_info_plus/device_info_plus.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -15,10 +19,42 @@ import 'flutter_flow/internationalization.dart';
 import 'model/quiz_history_model.dart';
 import 'model/user_model.dart';
 
+String plat = ' ';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
+
+  if (!kIsWeb) {
+    // Platform-specific code only runs on non-web platforms.
+    DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+
+    if (Platform.isWindows) {
+      WindowsDeviceInfo windowsInfo = await deviceInfoPlugin.windowsInfo;
+      print(windowsInfo);
+    } else if (Platform.isLinux) {
+      LinuxDeviceInfo linuxInfo = await deviceInfoPlugin.linuxInfo;
+      print(linuxInfo);
+    } else if (Platform.isMacOS) {
+      MacOsDeviceInfo macInfo = await deviceInfoPlugin.macOsInfo;
+      print(macInfo);
+    } else if (Platform.isAndroid) {
+      AndroidDeviceInfo androidInfo = await deviceInfoPlugin.androidInfo;
+      print(androidInfo);
+    } else if (Platform.isIOS) {
+      IosDeviceInfo iosInfo = await deviceInfoPlugin.iosInfo;
+      print(iosInfo);
+    } else {
+      // Handle other platforms, like embedded
+      print("Unsupported platform");
+    }
+  } else {
+    // Web-specific code
+    plat = 'web';
+    print(plat);
+    // You can use browser-related checks or web-specific implementations here.
+  }
 
   await FlutterFlowTheme.initialize();
   await authManager.initialize();
@@ -26,26 +62,52 @@ void main() async {
   await Hive.initFlutter();
   var box = await Hive.openBox<QuizHistory>('quizHistoryBox');
 
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider<UserModel>(
-          create: (context) => UserModel(),
-        ),
-        ChangeNotifierProvider<AnswerModel>(
-          create: (context) => AnswerModel(),
-        ),
-        ChangeNotifierProvider<Quizhistory>(
-          create: (context) => Quizhistory(),
-        ),
-        ChangeNotifierProvider<QandaHistoryModel>(
-          create: (context) => QandaHistoryModel(),
-        ),
-      ],
-      child: const MyApp(),
-    ),
-  );
+  if(plat == 'web' ){
+    runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<UserModel>(
+            create: (context) => UserModel(),
+          ),
+          ChangeNotifierProvider<AnswerModel>(
+            create: (context) => AnswerModel(),
+          ),
+          ChangeNotifierProvider<Quizhistory>(
+            create: (context) => Quizhistory(),
+          ),
+          ChangeNotifierProvider<QandaHistoryModel>(
+            create: (context) => QandaHistoryModel(),
+          ),
+        ],
+        child: const MyWebApp(),
+      ),
+    );
+  } else {
+    runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider<UserModel>(
+            create: (context) => UserModel(),
+          ),
+          ChangeNotifierProvider<AnswerModel>(
+            create: (context) => AnswerModel(),
+          ),
+          ChangeNotifierProvider<Quizhistory>(
+            create: (context) => Quizhistory(),
+          ),
+          ChangeNotifierProvider<QandaHistoryModel>(
+            create: (context) => QandaHistoryModel(),
+          ),
+        ],
+        child: const MyApp(),
+      ),
+    );
+
+  }
+
+
 }
+
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -119,7 +181,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: false,
       ),
       themeMode: _themeMode,
-      home: const SplashScreen(),
+      home: SplashScreen(plat: plat),
       //MainScreen(),
       //
       //routerConfig: _router,
@@ -127,3 +189,82 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
+
+class MyWebApp extends StatefulWidget {
+  const MyWebApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  State<MyWebApp> createState() => _MyWebAppState();
+
+  static _MyWebAppState of(BuildContext context) =>
+      context.findAncestorStateOfType<_MyWebAppState>()!;
+}
+
+class _MyWebAppState extends State<MyWebApp> {
+  Locale? _locale;
+  ThemeMode _themeMode = FlutterFlowTheme.themeMode;
+
+  late AppStateNotifier _appStateNotifier;
+
+  late Stream<MyDronaAuthUser> userStream;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _appStateNotifier = AppStateNotifier.instance;
+
+    userStream = myDronaAuthUserStream()
+      ..listen((user) {
+        _appStateNotifier.update(user);
+      });
+
+    Future.delayed(
+      const Duration(milliseconds: 1000),
+          () => _appStateNotifier.stopShowingSplashImage(),
+    );
+  }
+
+  void setLocale(String language) {
+    setState(() => _locale = createLocale(language));
+  }
+
+  void setThemeMode(ThemeMode mode) => setState(() {
+    _themeMode = mode;
+    FlutterFlowTheme.saveThemeMode(mode);
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'MyDrona',
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        FFLocalizationsDelegate(),
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      locale: _locale,
+      supportedLocales: const [
+        Locale('en'),
+        Locale('es'),
+        Locale('de'),
+        Locale('ar'),
+      ],
+      theme: ThemeData(
+        brightness: Brightness.light,
+        useMaterial3: false,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        useMaterial3: false,
+      ),
+      themeMode: _themeMode,
+      home: SplashScreen(plat: plat),
+      //MainScreen(),
+      //routerConfig: _router,
+    );
+  }
+}

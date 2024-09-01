@@ -6,7 +6,14 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'model/qanda_history_model.dart';
 
 class SplineCharts extends StatefulWidget {
-  const SplineCharts({super.key});
+  double height;
+  double width;
+
+  SplineCharts({
+    super.key,
+    required this.height,
+    required this.width
+  });
 
   @override
   State<SplineCharts> createState() => _SplineChartsState();
@@ -32,8 +39,8 @@ class _SplineChartsState extends State<SplineCharts> {
         return Stack(
           children: [
             Container(
-              width: MediaQuery.of(context).size.width * 0.92,
-              height: MediaQuery.of(context).size.height * .20,
+              width: widget.width,// MediaQuery.of(context).size.width * 0.92,
+              height: widget.height,//MediaQuery.of(context).size.height * .20,
               decoration: BoxDecoration(
                 boxShadow: const [
                   BoxShadow(

@@ -10,8 +10,10 @@ export 'login_page_model.dart';
 
 class InfoPageWidget extends StatefulWidget {
   final String number;
+  final String plat;
   const InfoPageWidget({super.key,
     required this.number,
+    required this.plat,
 
 
   });
@@ -44,6 +46,9 @@ class _LoginPageWidgetState extends State<InfoPageWidget> {
 
   @override
   void dispose() {
+    _nameController.dispose();
+    _dobController.dispose();
+    _emailController.dispose();
     _model.dispose();
     super.dispose();
   }
@@ -348,7 +353,7 @@ class _LoginPageWidgetState extends State<InfoPageWidget> {
                                               name:_nameController.text,
                                               email:_emailController.text,
                                               dob: _dobController.text,
-                                              number: widget.number,
+                                              number: widget.number, plat: widget.plat,
                                             ),
                                         transitionsBuilder: (context, animation, secondaryAnimation, child) {
                                           const curve = Curves.ease;

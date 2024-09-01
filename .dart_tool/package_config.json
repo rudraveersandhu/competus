@@ -200,6 +200,18 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "device_info_plus",
+      "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/device_info_plus-10.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "device_info_plus_platform_interface",
+      "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/device_info_plus_platform_interface-7.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "dropdown_button2",
       "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/dropdown_button2-2.3.9",
       "packageUri": "lib/",
@@ -330,6 +342,12 @@
       "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/flutter_shaders-0.1.2",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "flutter_slidable",
+      "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/flutter_slidable-3.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "flutter_spinkit",
@@ -1040,6 +1058,18 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "win32",
+      "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/win32-5.5.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
+      "name": "win32_registry",
+      "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/win32_registry-1.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.4"
+    },
+    {
       "name": "xdg_directories",
       "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/xdg_directories-1.0.4",
       "packageUri": "lib/",
@@ -1064,7 +1094,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-08-10T08:15:40.337957Z",
+  "generated": "2024-08-27T06:27:32.751465Z",
   "generator": "pub",
   "generatorVersion": "3.4.1",
   "flutterRoot": "file:///Users/rudraveersingh/Desktop/flutter",

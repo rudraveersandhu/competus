@@ -5,6 +5,8 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:http/http.dart' as http;
 import 'package:my_drona/Main_Screen.dart';
 import 'package:my_drona/pages/login_page/info_page_widget.dart';
+import 'package:my_drona/pages/subjectData.dart';
+import 'package:my_drona/webApp/main_screen_web.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
 import 'model/quiz_history_model.dart';
@@ -16,11 +18,17 @@ import 'model/user_model.dart';
 
 
 class DronaService {
+  final String plat;
+  DronaService(this.plat);
 
-  DronaService();
   bool flag = false;
-
   Timer? timer;
+
+  bool verified = false;
+  bool exists = false;
+  String id = '';
+  String num = '';
+
 
   Future<void> putUserData(String id, Map<String, dynamic> content) async {
     final String dbUrl = "https://db.quilldb.io/db/drona/users/document";
@@ -79,28 +87,60 @@ class DronaService {
     }
   }
 
-  Future<Map<String, dynamic>> getUserData(String userId) async {
-   // final String apiUrl = '$baseUrl/users/$userId'; // Append the userId to the users endpoint
 
+  Future<Map<String, dynamic>> getUserData(String userId) async {
     final String DbUrl = "https://db.quilldb.io/users/$userId";
 
-    final response = await http.get(
+    try {
+      final response = await http.get(
         Uri.parse(DbUrl),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    );
-    //await Future.delayed(Duration(microseconds: 1)); // simulate a network delay
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      );
 
-    if (response.statusCode == 200) {
-      print("Response code mila hai bhai : ${jsonDecode(response.body)}");
-      return jsonDecode(response.body);
-
-    } else {
-      return jsonDecode(response.body);
-
+      if (response.statusCode == 200) {
+        print("Response code mila hai bhai : ${jsonDecode(response.body)}");
+        return jsonDecode(response.body);
+      } else {
+        print("Error response code: ${response.statusCode}");
+        return jsonDecode(response.body);
+      }
+    } catch (e) {
+      print("Exception caught: $e");
+      var c = {
+        "_id": "66cd8de691ab15d0fdcxxxxx",
+        "name": "Rudraveer Singh",
+        "dob": "01/08/2024",
+        "email": "rudraveersandhu@gmail.com",
+        "profile_picture": "https://www.shareicon.net/data/128x128/2016/05/24/770126_man_512x512.png",
+        "subject": "UGC NET",
+        "sub_subjects": "",
+        "phone_number": "",
+        "address": "",
+        "credits_left": 300,
+        "credits_recharged": 300,
+        "graph_performance_data": [
+          [
+            0
+          ],
+          [
+            0
+          ],
+          [
+            ""
+          ]
+        ],
+        "quiz_history": [],
+        "total_questions_solved": 0,
+        "time_spent_practicing": 0,
+        "strongest_subject": "",
+        "weakest_subject": ""
+      };
+      return c;
     }
   }
+
 
   fetchAndGetData(Map<String, dynamic> data, BuildContext context) async {
     User user = User.fromJson(data);
@@ -130,7 +170,7 @@ class DronaService {
 
       Navigator.pushReplacement( context ,
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(),
+          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(plat: plat,),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             const curve = Curves.ease;
             var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
@@ -149,7 +189,7 @@ class DronaService {
         PageRouteBuilder(
           pageBuilder: (context, animation, secondaryAnimation) => InfoPageWidget(
 
-            number:number,
+            number:number, plat: plat,
             ),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             const curve = Curves.ease;
@@ -246,6 +286,57 @@ class DronaService {
     }
   }
 
+  Future<List<SubjectData>> fetchSubjects() async {
+    final response = await http.get(Uri.parse('https://db.quilldb.io/data/subjects'));
+
+    if (response.statusCode == 200) {
+      // Decode the JSON response.
+      List<dynamic> jsonResponse = json.decode(response.body);
+
+      // Initialize a list to store the subject data.
+      List<SubjectData> subjectDataList = [];
+
+      // Iterate through the JSON data and extract subjects.
+      for (var item in jsonResponse) {
+        String stream = item['content']['stream'];
+        Map<String, dynamic> subjectsMap = Map<String, dynamic>.from(item['content']['subjects']);
+
+        // Convert the dynamic list to List<String>.
+        Map<String, List<String>> convertedSubjectsMap = {};
+        subjectsMap.forEach((key, value) {
+          convertedSubjectsMap[key] = List<String>.from(value);
+        });
+
+        subjectDataList.add(SubjectData(stream: stream, subjects: convertedSubjectsMap));
+      }
+
+      return subjectDataList;
+    } else {
+      throw Exception('Failed to load subjects');
+    }
+  }
+
+  Future<List<String>> getTopicsForSubject(String subjectName) async {
+    try {
+      List<SubjectData> subjects = await fetchSubjects();
+
+      // Iterate through the subject data to find the requested subject.
+      for (var subjectData in subjects) {
+        for (var subject in subjectData.subjects.keys) {
+          if (subject == subjectName) {
+            return subjectData.subjects[subject]!;
+          }
+        }
+      }
+
+      // If the subject is not found, return an empty list.
+      return [];
+    } catch (e) {
+      print("ERROR HAI $e");
+      return [];
+    }
+  }
+
   Future<List<Subject>> getallSubjects(String Subj) async {
 
     final String dbUrl = "https://db.quilldb.io/data/subjects";
@@ -267,6 +358,8 @@ class DronaService {
         List<Subject> subjectList = subjects.entries.map((entry) {
           return Subject(name: entry.key, filenames: List<String>.from(entry.value));
         }).toList();
+
+        print(subjectList);
 
         return subjectList;
       } else {
@@ -308,6 +401,36 @@ class DronaService {
     }
   }
 
+  Future<List<Map<String, dynamic>>> fetchAPiQuestions(int question_limit, String exam, String topic) async {
+    final url = 'https://db.quilldb.io/generate_quiz?exam=$exam&num_questions=$question_limit&topic=$topic';
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      Map<String, dynamic> data = json.decode(response.body);
+      List<Map<String, dynamic>> questions = [];
+
+      for (var item in data['quiz']) {
+        Map<String, dynamic> question = {
+          'exam': item['exam'],
+          'topic': item['topic'],
+          'question': item['question'],
+          'options': item['options'],
+          'correct_answer': item['correct_answer'],
+          'difficulty': item['difficulty'],
+          'reasoning': item['reasoning'],
+          'tag': item['tag'],
+        };
+        questions.add(question);
+      }
+
+      print("FETCHED QUESTIONS: $questions");
+      return questions;
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
+
   Future<void> phoneAuth(String phn, BuildContext context, int stream_count) async {
     if (phn == null || phn.isEmpty) {
       print('Error: Phone number is null or empty');
@@ -329,16 +452,20 @@ class DronaService {
         print('User authentication started successfully');
 
         // Start periodic checking
-        Timer.periodic(Duration(seconds: 3), (timer) async {
-          await checkPhoneAuth(phn, context, stream_count);
+        Timer.periodic(
+            Duration(seconds: 3),
+                (timer) async {
+              await checkPhoneAuth(phn, context, stream_count);
 
-          if (flag == true) {
-            print('Phone authentication completed successfully');
-            timer.cancel();
-          } else if (flag == false) {
-            print(flag);
-          }
-        });
+              if (flag == true) {
+                print('Phone authentication completed successfully');
+                timer.cancel();
+
+              } else if (flag == false) {
+                print(flag);
+              }
+            }
+        );
       }
     } catch (e) {
       print("Error while authenticating user: $e");
@@ -349,16 +476,15 @@ class DronaService {
 
     final String authURL = "https://db.quilldb.io/userCheck";
 
-
   }
 
   checkPhoneAuth(String phn, BuildContext context, int stream_count) async {
     final String authURL = "https://auth.quilldb.io/checkVerificationStatus?phoneNumber=$phn";
 
     try{
-      final response = await http.get(
-        Uri.parse(authURL),
-      );
+
+      final response = await http.get(Uri.parse(authURL),);
+
       if (response.statusCode != 200) {
         print('Response xxx  status: ${response.statusCode}');
         print('Response xxx  body: ${response.body}');
@@ -370,39 +496,30 @@ class DronaService {
         print('Response aa body: ${response.body}');
         Map<String, dynamic> responseMap = jsonDecode(response.body);
 
-        bool verified = responseMap['verified'] ?? '';
-        bool exists = responseMap['exists'] ?? '';
-        String id = responseMap['id'] ?? '';
-
-        print("----------------------------------");
-        print(verified);
-        print(exists);
-        print(id);
-        print("----------------------------------");
+        verified = responseMap['verified'] ?? '';
+        exists   = responseMap['exists']   ?? '';
+        id       = responseMap['id']       ?? '';
+        num      = phn ?? '';
 
         print("verified: $verified");
 
         flag = verified;
-        if(verified && exists){
+
+        if(verified && exists)
+        {
           print("going to the main screen");
           var x = await getUserData(id);
+
           print("Userdata_1: $x");
           await feedUserModel_ThenHomeScreen(context,x);
-          // var data = await fetchAndGetData( x, context );
-
-          // print("Userdata_2: $data");
-
-
-          //add info updation method here
-
-
-        } else if(verified && exists == false)
+        }
+        else if(verified && exists == false)
         {
           print("going to the info screen");
           Navigator.pushReplacement(
             context,
             PageRouteBuilder(
-              pageBuilder: (context, animation, secondaryAnimation) => InfoPageWidget(number: phn),
+              pageBuilder: (context, animation, secondaryAnimation) => InfoPageWidget(number: phn, plat: plat,),
               //ExamSelectionScreen(streamCount: stream_count),
               transitionsBuilder: (context, animation, secondaryAnimation, child) {
                 const curve = Curves.ease;
@@ -421,10 +538,60 @@ class DronaService {
           );
         }
       }
-    } catch(e) {
-      print("Error while authenticating user: $e");
+
+    } catch(e,stackTrace) {
+
+      // if (
+      // e is http.ClientException
+      // && e.message.contains('XMLHttpRequest error')
+      // && plat == 'web') {
+      //   plat_is_web(verified,exists,id,context,num);
+      //   print("Caught XMLHttpRequest error.");
+      //
+      // } else {
+      //   print("An error occurred: $e");
+      // }
+
     }
 
+  }
+
+  plat_is_web(bool verified, bool exists, String id, BuildContext context,String num) async {
+    print("xxx_Verified: $verified");
+    print("xxx_exists: $exists");
+    print("xxx_id: $id");
+
+    if(verified && exists){
+      print("going to the main screen");
+      var x = await getUserData(id);
+      print("Userdata_1: $x");
+      await feedUserModel_ThenHomeScreen(context,x);
+
+    } else if(verified && exists == false)
+    {
+      print("going to the info screen");
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation)
+          => InfoPageWidget(number: num, plat: plat,),
+          //ExamSelectionScreen(streamCount: stream_count),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const curve = Curves.ease;
+            var fadeAnimation = animation.drive(
+                Tween(begin: 0.0, end: 1.0).chain(
+                    CurveTween(curve: curve)));
+
+            return FadeTransition(
+              opacity: fadeAnimation,
+              child: child,
+            );
+          },
+          transitionDuration:
+          const Duration(milliseconds: 700), // Adjust duration to make it slower
+        ),
+      );
+    }
   }
 
 
@@ -456,14 +623,39 @@ class DronaService {
 
       http.StreamedResponse response = await request.send();
 
-      if (response.statusCode == 200) {
-        print("The id received is :${await response.stream.bytesToString()}");
+      print(response.statusCode);
 
-        var data = response.stream;
-        print(data);
+      if (response.statusCode == 200) {
+        var responseString = await response.stream.bytesToString();
+        print("The id received is :$responseString");
+
+// Parse the response string into a Map
+        var data = json.decode(responseString);
+
+// Access the 'id' from the parsed JSON
+        var id = data['id'];
+
+        await user_box.put('id', id);
+
+        await updateBloodLine(
+            context,
+            id,
+            name,
+            email,
+            number,
+            dob,
+            subject,
+            sub_subjects,
+            crLeft,
+            crRech,
+            profile_pic,
+            graph_performance_data
+        );
+
       } else if (response.statusCode == 307) {
         // Handle the redirect manually
         String redirectUrl = response.headers['location']!;
+
         var redirectedResponse = await http.post(
           Uri.parse(redirectUrl),
           headers: headers,
@@ -542,26 +734,29 @@ class DronaService {
       time_spent_practicing: 0,
       strongest_subject: "Less-Data",
       weakest_subject: "Less-Data",
-
-
     );
 
     Navigator.pushReplacement(
       context,
       PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => MainScreen(),
+        pageBuilder: (context, animation, secondaryAnimation) => MainScreen(plat: plat,),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           const curve = Curves.ease;
-          var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
+          var fadeAnimation = animation.drive(
+              Tween(begin: 0.0, end: 1.0).chain(
+                  CurveTween(curve: curve)));
 
           return FadeTransition(
             opacity: fadeAnimation,
             child: child,
           );
         },
-        transitionDuration: const Duration(milliseconds: 500),
+        transitionDuration:
+        const Duration(milliseconds: 700), // Adjust duration to make it slower
       ),
     );
+
+
   }
 
   feedUserModel_ThenHomeScreen(BuildContext context,var user) async {
@@ -622,25 +817,50 @@ class DronaService {
     print("DS credits_recharged: $creditsRecharged");
     await user_box.put('id', userId);
 
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => MainScreen(),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          const curve = Curves.ease;
-          var fadeAnimation = animation.drive(
-              Tween(begin: 0.0, end: 1.0).chain(
-                  CurveTween(curve: curve)));
+    if(plat == 'web'){
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => MainScreenWeb(plat: plat,),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const curve = Curves.ease;
+            var fadeAnimation = animation.drive(
+                Tween(begin: 0.0, end: 1.0).chain(
+                    CurveTween(curve: curve)));
 
-          return FadeTransition(
-            opacity: fadeAnimation,
-            child: child,
-          );
-        },
-        transitionDuration:
-        const Duration(milliseconds: 700), // Adjust duration to make it slower
-      ),
-    );
+            return FadeTransition(
+              opacity: fadeAnimation,
+              child: child,
+            );
+          },
+          transitionDuration:
+          const Duration(milliseconds: 700), // Adjust duration to make it slower
+        ),
+      );
+
+    } else {
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(plat: plat,),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            const curve = Curves.ease;
+            var fadeAnimation = animation.drive(
+                Tween(begin: 0.0, end: 1.0).chain(
+                    CurveTween(curve: curve)));
+
+            return FadeTransition(
+              opacity: fadeAnimation,
+              child: child,
+            );
+          },
+          transitionDuration:
+          const Duration(milliseconds: 700), // Adjust duration to make it slower
+        ),
+      );
+    }
+
+
   }
 
   feedtestHistory(String id, var content) async {

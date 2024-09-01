@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
-
-import 'components/QuestionBlock.dart';
 import 'model/answer_model.dart';
 
 class QuizHistoryScreen extends StatefulWidget {
@@ -27,16 +26,43 @@ class QuizHistoryScreen extends StatefulWidget {
 class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
   final PageController _pageController = PageController();
 
-
   int _seconds = 0;
-  int q_index  = 1; // Start at 1 since it's 1-based index
+  int q_index  = 0; // Start at 1 since it's 1-based index
 
-  List<String> user_answers = [] ;
-  String    selected_answer = '0';
+  List<String> user_answers = []  ;
+  String    selected_answer = '0' ;
+
+  int current_page = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    print(widget.selected_answers);
+    print(widget.correct_answers);
+    user_answers.clear();
+    selected_answer = '0';
+    q_index = 1;
+    _seconds = 0;
+
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   // Check if the PageController has any positions
+    //   if (_pageController.hasClients) {
+    //     print("page controller has clients");
+    //     final currentPage = _pageController.page?.toInt() ?? 0;
+    //     setState(() {
+    //       q_index = currentPage + 1;
+    //       });
+    //     }else{
+    //     print("page controller do not have any clients");
+    //   }
+    //   });
+    }
 
 
-  runme()async{
-    //box = await Hive.openBox<List<QuizHistory>>('quizHistoryBox');
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   _showExitConfirmationDialog() {
@@ -62,7 +88,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Text(
-                  'Do you want to quit the exam?',
+                  'Quit Test History ?',
                   style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300),
                 ),
                 SizedBox(height: 16.0),
@@ -90,7 +116,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
                     ),
                     Container(
                       height: 40,
-                      width: 130,
+                      width: 70,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         color: Colors.white,
@@ -98,7 +124,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
 
                       child: Center(
                         child: TextButton(
-                          child: Text('Yes, quit exam',
+                          child: Text('Yes',
                             style: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400),
                           ),
                           onPressed: () {
@@ -119,25 +145,6 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
   }
 
 
-  @override
-  void initState() {
-    super.initState();
-    runme();
-    print('latest: ${widget.questions}');
-    user_answers.clear();
-    selected_answer = '0';
-    q_index = 1;
-    _seconds = 0;
-
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      // Safe to access _pageController.page here
-      final currentPage = _pageController.page ?? 0;
-      setState(() {
-        q_index = currentPage.toInt() + 1;
-        });
-      });
-
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -148,7 +155,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
       backgroundColor: Colors.grey.shade50,
       body: Stack(
         children: [
-          // background element above
+
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
@@ -253,6 +260,73 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
                       )
                     ],
                   ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 30.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          if (_pageController.page?.toInt() == widget.questions.length ) {
+                            // Handle end of quiz
+                          } else {
+                            //user_answers.add(selected_answer);
+                            //Provider.of<AnswerModel>(context, listen: false).all_false();
+                            //selected_answer = '0';
+                            _pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn);
+                          }
+                          setState(() {
+                            current_page = _pageController.page!.toInt();
+                          });
+
+                          //print("${widget.questions.length}/$current_page");
+                          //print(_pageController.page?.toInt());
+
+                        },
+                        child: current_page < widget.questions.length -2   ? Container(
+                          height: 45,
+                          width: MediaQuery.of(context).size.width / 4,
+                          decoration: BoxDecoration(
+                              color: Colors.black54,
+                              borderRadius: BorderRadius.circular(20),
+                              border: Border.all(color: Colors.white, width: .5)),
+                          child: Center(
+                            child: Text(
+                              'Next',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 18,
+                                  color: Colors.white
+                              ),
+                            ),
+                          ),
+                        ) :
+                          GestureDetector(
+                          onTap: () async {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            height: 45,
+                            width: MediaQuery.of(context).size.width / 3.2,
+                            decoration: BoxDecoration(
+                                color: Colors.black54.withGreen(41),
+                                borderRadius: BorderRadius.circular(20),
+                                border: Border.all(color: Colors.white, width: .5)),
+                            child: Center(
+                              child: Text(
+                                'Exit',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 18,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+
+                    ),
+                  )
                 ],
               ),
             ),
@@ -269,8 +343,6 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
     // Get answers for the current question
     List<String> currentAnswers = widget.answers[index];
 
-
-
     return Stack(
       children: [
         Positioned(
@@ -283,7 +355,8 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
               width: MediaQuery.of(context).size.width - 60,
               decoration: BoxDecoration(
                   color: Colors.black54,
-                  borderRadius: BorderRadius.circular(35)),
+                  borderRadius: BorderRadius.circular(15)
+              ),
             ),
           ),
         ),
@@ -317,7 +390,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
           ),
         ),
         Positioned(
-          top: MediaQuery.of(context).size.height/2.3,
+          top: MediaQuery.of(context).size.height/2.4,
           left: 0,
           right: 0,
           child: Container(
@@ -362,72 +435,6 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
             ),
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Container(),
-            Padding(
-              padding: const EdgeInsets.only(right: 30.0),
-              child: GestureDetector(
-                onTap: () {
-                  if (_pageController.page?.toInt() == widget.questions.length - 1) {
-                    // Handle end of quiz
-                  } else {
-                    user_answers.add(selected_answer);
-                    Provider.of<AnswerModel>(context, listen: false).all_false();
-                    selected_answer = '0';
-                    _pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.easeIn);
-                  }
-                },
-                child: !(_pageController.page?.toInt() == widget.questions.length - 1) ? Container(
-                  height: 45,
-                  width: MediaQuery.of(context).size.width / 4,
-                  decoration: BoxDecoration(
-                      color: Colors.black54,
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(color: Colors.white, width: .5)),
-                  child: Center(
-                    child: Text(
-                      'Next',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18,
-                          color: Colors.white
-                      ),
-                    ),
-                  ),
-                ) :  GestureDetector(
-                  onTap: ()async {
-                    print("Saving last answer");
-                    user_answers.add(selected_answer);
-                    Provider.of<AnswerModel>(context, listen: false).all_false();
-                    selected_answer = '0';
-                    //await updateQuizHistory();
-                    //test_finished();
-                  },
-                  child: Container(
-                    height: 45,
-                    width: MediaQuery.of(context).size.width / 3.2,
-                    decoration: BoxDecoration(
-                        color: Colors.black54.withGreen(41),
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: Colors.white, width: .5)),
-                    child: Center(
-                      child: Text(
-                        'Submit Test',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 18,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            )
-          ],
-        )
       ],
     );
   }
@@ -438,28 +445,16 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen> {
       AnswerModel question,
       bool isSelected,
       String number,
-      String answerText,
+      String option,
       int index) {
 
-    print("---------------------------------------------------------------------------------------");
-    print("Question: ${widget.correct_answers[index]}");   // options(unsigned)
-    print("number: $number");
-    print("answerText: $answerText");
-    print('selected answer: ${widget.selected_answers}');
-    print("isSelected: $isSelected");
-    print("---------------------------------------------------------------------------------------");
-    print("dataatatatatat:  $answerText == ${widget.selected_answers[index]} ");
-    bool check = answerText == widget.selected_answers[index];
+    //bool check = answerText == widget.selected_answers[index];
     return QuestionHistoryBlock(
       number: number,
-      option: answerText,
+      option: option,
       correctAnswer : widget.correct_answers[index],
       //block_color: check ? Color(0xFF00968A).withBlue(600) : Colors.white54,
         textColor: isSelected ? Colors.white : Colors.white,
-        optionAColor: Colors.white54,
-        optionBColor: Colors.white54,
-        optionCColor: Colors.white54,
-        optionDColor: Colors.white54,
       userAnswer: widget.selected_answers[index],
     );
   }
@@ -471,10 +466,7 @@ class QuestionHistoryBlock extends StatefulWidget {
   final String number;
   final String userAnswer;
   final Color textColor;
-  final Color optionAColor;
-  final Color optionBColor;
-  final Color optionCColor;
-  final Color optionDColor;
+
 
   const QuestionHistoryBlock({
     super.key,
@@ -483,10 +475,7 @@ class QuestionHistoryBlock extends StatefulWidget {
     required this.correctAnswer,
     required this.userAnswer,
     required this.textColor,
-    required this.optionAColor,
-    required this.optionBColor,
-    required this.optionCColor,
-    required this.optionDColor,
+
   });
 
   @override
@@ -496,23 +485,21 @@ class QuestionHistoryBlock extends StatefulWidget {
 class _QuestionHistoryBlockState extends State<QuestionHistoryBlock> {
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build( BuildContext context ) {
     String ans = widget.correctAnswer + ")";
-    print("''''''''''''''''''''''''''''''''''''''''''''''''''''''''");
-    print("aaaa: ${widget.number == ans}");
-    print("bbbb: ${widget.number}");
-    print("option: ${widget.option}");
-    print("user_answer: ${widget.userAnswer}");
-    print("correct_answer: ${widget.correctAnswer}");
-    print("''''''''''''''''''''''''''''''''''''''''''''''''''''''''");
-
     return Center(
       child: Container(
         height: (MediaQuery.of(context).size.height / 2.5) / 6,
         width: MediaQuery.of(context).size.width - 100,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: widget.number == ans ? Colors.green : widget.option == widget.userAnswer ? Colors.red.shade300 : Colors.white54,
+          color: widget.option == widget.correctAnswer ? Colors.green : widget.option == widget.userAnswer ? Colors.red.shade300 : Colors.white54,
           border: Border.all(
             color: Colors.white,
             width: .5,
@@ -541,6 +528,7 @@ class _QuestionHistoryBlockState extends State<QuestionHistoryBlock> {
               right: 10,
               child: Icon(Icons.done),
             ): Container(),
+
           ],
         ),
       ),
