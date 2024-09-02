@@ -358,7 +358,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   }
 
   start_verification(String pnum) async {
-    await DronaService(widget.plat).phoneAuth(pnum,context,widget.stream_count);
+    await DronaService(widget.plat).phoneAuth(pnum,context);
     widget.plat != 'web' ? await _launchWhatsApp() : null;
   }
 

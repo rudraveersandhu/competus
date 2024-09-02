@@ -35,18 +35,19 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       alignment: Alignment.center,
       key: ValueKey<int>(isSelected ? index : -index),
       children: [
-        if (isSelected)
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-            ),
-          ),
+        // if (isSelected)
+        //   Container(
+        //     width: 35,
+        //     height: 35,
+        //     decoration: BoxDecoration(
+        //       color: Colors.white70,
+        //       shape: BoxShape.circle,
+        //     ),
+        //   ),
         Icon(
           icon,
-          color: isSelected ? Colors.green : Colors.white,
+          color: isSelected ? Colors.white : Colors.white70,
+          size: isSelected ? 25 : 20,
         ),
       ],
     );
@@ -90,12 +91,13 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
 
         // Bottom navigation bar
         Positioned(
+          top: MediaQuery.of(context).size.height * .89,
             left:  10,
             right:  10,
-            bottom:  10,
+            bottom: kBottomNavigationBarHeight/1.5,
             child: Container(
-              height: 70,
-              width: MediaQuery.of(context).size.width - 50,
+              height: 60,
+              //width: MediaQuery.of(context).size.width - 50,
               decoration: BoxDecoration(
                 color: Color(0xFF00968A),
                 borderRadius: BorderRadius.circular(50),
@@ -109,83 +111,78 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
               ),
             )
         ),
+
         Positioned(
-          left: 10,
-          right: 10,
-          bottom: 10,
-          child: AnimatedBuilder(
-            animation: _animation,
-            builder: (context, child) {
-              return Transform.translate(
-                offset: Offset(0, _animation.value * 120),
-                child: child,
-              );
-            },
-            child: Theme(
-              data: Theme.of(context).copyWith(
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  type: BottomNavigationBarType.fixed,
-                ),
-              ),
-              child: BottomNavigationBar(
-                currentIndex: _currentIndex,
-                onTap: _onTabTapped,
-                type: BottomNavigationBarType.fixed,
-                selectedItemColor: Color(0xFF00968A),
-                unselectedItemColor: Colors.white,
-                showSelectedLabels: false,
-                showUnselectedLabels: false,
+          bottom: 0,
+          top: MediaQuery.of(context).size.height * .89,
+          left: 0,
+          right: 0,
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              bottomNavigationBarTheme: BottomNavigationBarThemeData(
+                backgroundColor: Colors.transparent,
                 elevation: 0,
-                items: [
-                  BottomNavigationBarItem(
-                    icon: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 100),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(child: child, scale: animation);
-                      },
-                      child: _buildIcon(CupertinoIcons.home, _currentIndex == 0, 0),
-                    ),
-                    label: 'Home',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: AnimatedSwitcher(
-                      duration: Duration(milliseconds: 300),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(child: child, scale: animation);
-                      },
-                      child: _buildIcon(CupertinoIcons.search, _currentIndex == 1, 1),
-                    ),
-                    label: 'Search',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: AnimatedSwitcher(
-                      duration: Duration(milliseconds: 300),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(child: child, scale: animation);
-                      },
-                      child: _buildIcon(CupertinoIcons.book, _currentIndex == 2, 2),
-                    ),
-                    label: 'Your Library',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: AnimatedSwitcher(
-                      duration: Duration(milliseconds: 300),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(child: child, scale: animation);
-                      },
-                      child: _buildIcon(CupertinoIcons.person_alt, _currentIndex == 3, 3),
-                    ),
-                    label: 'Settings',
-                  ),
-                ],
+                type: BottomNavigationBarType.fixed,
               ),
             ),
+            child: BottomNavigationBar(
+              currentIndex: _currentIndex,
+              onTap: _onTabTapped,
+              type: BottomNavigationBarType.fixed,
+              selectedItemColor: Color(0xFF903BF9),
+
+              unselectedItemColor: Colors.white,
+              showSelectedLabels: false,
+              showUnselectedLabels: false,
+              elevation: 0,
+              items: [
+                BottomNavigationBarItem(
+                  icon: AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 100),
+                    transitionBuilder: (Widget child, Animation<double> animation) {
+                      return ScaleTransition(child: child, scale: animation);
+                    },
+                    child: _buildIcon(CupertinoIcons.home, _currentIndex == 0, 0),
+                  ),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: AnimatedSwitcher(
+                    duration: Duration(milliseconds: 300),
+                    transitionBuilder: (Widget child, Animation<double> animation) {
+                      return ScaleTransition(child: child, scale: animation);
+                    },
+                    child: _buildIcon(CupertinoIcons.search, _currentIndex == 1, 1),
+                  ),
+                  label: 'Search',
+                ),
+                BottomNavigationBarItem(
+                  icon: AnimatedSwitcher(
+                    duration: Duration(milliseconds: 300),
+                    transitionBuilder: (Widget child, Animation<double> animation) {
+                      return ScaleTransition(child: child, scale: animation);
+                    },
+                    child: _buildIcon(CupertinoIcons.book, _currentIndex == 2, 2),
+                  ),
+                  label: 'Your Library',
+                ),
+                BottomNavigationBarItem(
+                  icon: AnimatedSwitcher(
+                    duration: Duration(milliseconds: 300),
+                    transitionBuilder: (Widget child, Animation<double> animation) {
+                      return ScaleTransition(child: child, scale: animation);
+                    },
+                    child: _buildIcon(CupertinoIcons.person_alt, _currentIndex == 3, 3),
+                  ),
+                  label: 'Settings',
+                ),
+              ],
+            ),
           ),
-        )
+        ),
+
       ],
     );
   }

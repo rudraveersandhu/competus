@@ -213,31 +213,7 @@ class _DashboardScreenState extends State<DashboardScreen>
             backgroundColor: FlutterFlowTheme
                 .of(context)
                 .primaryBackground,
-            floatingActionButton: FloatingActionButton(
-              onPressed: () async {
-                context.pushNamed(
-                  'transaction_ADD',
-                  extra: <String, dynamic>{
-                    kTransitionInfoKey: const TransitionInfo(
-                      hasTransition: true,
-                      transitionType: PageTransitionType.bottomToTop,
-                      duration: Duration(milliseconds: 220),
-                    ),
-                  },
-                );
-              },
-              backgroundColor: FlutterFlowTheme
-                  .of(context)
-                  .tertiary,
-              elevation: 8.0,
-              child: Icon(
-                Icons.add_rounded,
-                color: FlutterFlowTheme
-                    .of(context)
-                    .textColor,
-                size: 36.0,
-              ),
-            ),
+
 
             body: SafeArea(
               top: true,

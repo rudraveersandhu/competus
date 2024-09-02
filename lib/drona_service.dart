@@ -1,5 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:core';
+import 'dart:core';
+import 'dart:core';
 import 'package:flutter/cupertino.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:http/http.dart' as http;
@@ -431,7 +434,7 @@ class DronaService {
   }
 
 
-  Future<void> phoneAuth(String phn, BuildContext context, int stream_count) async {
+  Future<void> phoneAuth(String phn, BuildContext context) async {
     if (phn == null || phn.isEmpty) {
       print('Error: Phone number is null or empty');
       return;
@@ -455,7 +458,7 @@ class DronaService {
         Timer.periodic(
             Duration(seconds: 3),
                 (timer) async {
-              await checkPhoneAuth(phn, context, stream_count);
+              await checkPhoneAuth(phn, context);
 
               if (flag == true) {
                 print('Phone authentication completed successfully');
@@ -478,7 +481,7 @@ class DronaService {
 
   }
 
-  checkPhoneAuth(String phn, BuildContext context, int stream_count) async {
+  checkPhoneAuth(String phn, BuildContext context) async {
     final String authURL = "https://auth.quilldb.io/checkVerificationStatus?phoneNumber=$phn";
 
     try{
@@ -540,60 +543,49 @@ class DronaService {
       }
 
     } catch(e,stackTrace) {
-
-      // if (
-      // e is http.ClientException
-      // && e.message.contains('XMLHttpRequest error')
-      // && plat == 'web') {
-      //   plat_is_web(verified,exists,id,context,num);
-      //   print("Caught XMLHttpRequest error.");
-      //
-      // } else {
-      //   print("An error occurred: $e");
-      // }
+      print("errror caught bhai : $e");
 
     }
 
   }
 
-  plat_is_web(bool verified, bool exists, String id, BuildContext context,String num) async {
-    print("xxx_Verified: $verified");
-    print("xxx_exists: $exists");
-    print("xxx_id: $id");
-
-    if(verified && exists){
-      print("going to the main screen");
-      var x = await getUserData(id);
-      print("Userdata_1: $x");
-      await feedUserModel_ThenHomeScreen(context,x);
-
-    } else if(verified && exists == false)
-    {
-      print("going to the info screen");
-      Navigator.pushReplacement(
-        context,
-        PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation)
-          => InfoPageWidget(number: num, plat: plat,),
-          //ExamSelectionScreen(streamCount: stream_count),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            const curve = Curves.ease;
-            var fadeAnimation = animation.drive(
-                Tween(begin: 0.0, end: 1.0).chain(
-                    CurveTween(curve: curve)));
-
-            return FadeTransition(
-              opacity: fadeAnimation,
-              child: child,
-            );
-          },
-          transitionDuration:
-          const Duration(milliseconds: 700), // Adjust duration to make it slower
-        ),
-      );
-    }
-  }
-
+  // plat_is_web(bool verified, bool exists, String id, BuildContext context,String num) async {
+  //   print("xxx_Verified: $verified");
+  //   print("xxx_exists: $exists");
+  //   print("xxx_id: $id");
+  //
+  //   if(verified && exists){
+  //     print("going to the main screen");
+  //     var x = await getUserData(id);
+  //     print("Userdata_1: $x");
+  //     await feedUserModel_ThenHomeScreen(context,x);
+  //
+  //   } else if(verified && exists == false)
+  //   {
+  //     print("going to the info screen");
+  //     Navigator.pushReplacement(
+  //       context,
+  //       PageRouteBuilder(
+  //         pageBuilder: (context, animation, secondaryAnimation)
+  //         => InfoPageWidget(number: num, plat: plat,),
+  //         //ExamSelectionScreen(streamCount: stream_count),
+  //         transitionsBuilder: (context, animation, secondaryAnimation, child) {
+  //           const curve = Curves.ease;
+  //           var fadeAnimation = animation.drive(
+  //               Tween(begin: 0.0, end: 1.0).chain(
+  //                   CurveTween(curve: curve)));
+  //
+  //           return FadeTransition(
+  //             opacity: fadeAnimation,
+  //             child: child,
+  //           );
+  //         },
+  //         transitionDuration:
+  //         const Duration(milliseconds: 700), // Adjust duration to make it slower
+  //       ),
+  //     );
+  //   }
+  // }
 
 
   create_user(
@@ -760,63 +752,72 @@ class DronaService {
   }
 
   feedUserModel_ThenHomeScreen(BuildContext context,var user) async {
+    print('feeding');
 
-    final user_box = await Hive.openBox('user');
-    var userId     = user['_id'];
-    var name       = user['name'];
-    var dob        = user['dob'];
-    var email = user['email'];
-    var subject = user['subject'];
-    var subSubjects = user['sub_subjects'];
-    var phoneNumber = user['phone_number'];
-    var profilePicture = user['profile_picture'];
-    var address = user['address'];
-    //var rank = user['rank'];
-    var creditsLeft = user['credits_left'];
-    var creditsRecharged = user['credits_recharged'];
+    try{
+      final user_box = await Hive.openBox('user');
+      var userId = user['_id'];
+      var name = user['name'];
+      var dob = user['dob'];
+      var email = user['email'];
+      var subject = user['subject'];
+      var subSubjects = user['sub_subjects'];
+      var phoneNumber = user['phone_number'];
+      var profilePicture = user['profile_picture'];
+      var address = user['address'];
+      //var rank = user['rank'];
+      double creditsLeft = (user['credits_left']).toDouble();
+      double creditsRecharged = (user['credits_recharged']).toDouble();
 
-    var total_questions_solved = user['total_questions_solved'];
-    var time_spent_practicing = user['time_spent_practicing'];
-    var strongest_subject = user['strongest_subject'];
-    var weakest_subject = user['weakest_subject'];
+      int total_questions_solved = user['total_questions_solved'];
+      int time_spent_practicing = user['time_spent_practicing'];
+      var strongest_subject = user['strongest_subject'];
+      var weakest_subject = user['weakest_subject'];
 
+      List<List<dynamic>> graph_performance_data =
+          (user['graph_performance_data'] as List)
+              .map((item) =>
+                  (item as List).map((subItem) => subItem as dynamic).toList())
+              .toList();
 
-    List<List<dynamic>> graph_performance_data = (user['graph_performance_data'] as List)
-        .map((item) => (item as List).map((subItem) => subItem as dynamic).toList())
-        .toList();
-    ;
+      List<QuizHistory> testHistory = (user['quiz_history'] as List)
+          .map((item) => QuizHistory.fromJson(item))
+          .toList();
 
-    List<QuizHistory> testHistory = (user['quiz_history'] as List)
-        .map((item) => QuizHistory.fromJson(item))
-        .toList();
+      var model = context.read<UserModel>();
 
-    var model = context.read<UserModel>();
+      model.updateData(
+          id: userId,
+          name: name,
+          email: email,
+          number: phoneNumber,
+          profilePicture: profilePicture,
+          DOB: dob,
+          subject: subject,
+          subsubject: subSubjects,
+          address: address,
+          rank: '',
+          credits_left: creditsLeft,
+          credits_recharged: creditsRecharged,
+          graph_performance_data: graph_performance_data,
+          quizHistory: testHistory,
+          total_questions_solved: total_questions_solved,
+          time_spent_practicing: time_spent_practicing,
+          strongest_subject: strongest_subject,
+          weakest_subject: weakest_subject);
 
-    model.updateData(
-        id: userId,
-        name: name,
-        email: email,
-        number: phoneNumber,
-        profilePicture: profilePicture,
-        DOB: dob,
-        subject: subject,
-        subsubject: subSubjects,
-        address: address,
-        rank: '',
-        credits_left: creditsLeft,
-        credits_recharged: creditsRecharged,
-        graph_performance_data: graph_performance_data,
-        quizHistory: testHistory,
-        total_questions_solved: total_questions_solved,
-        time_spent_practicing: time_spent_practicing,
-        strongest_subject: strongest_subject,
-        weakest_subject: weakest_subject
-    );
+      print("DS redits_left: $creditsLeft");
+      print("DS credits_recharged: $creditsRecharged");
+      await user_box.put('id', userId);
+      print('feeded');
 
-    print("DS redits_left: $creditsLeft");
-    print("DS credits_recharged: $creditsRecharged");
-    await user_box.put('id', userId);
+      navTOmain(context);
+    }catch(e){
+      print("Error aaya hau : $e");
+    }
+  }
 
+  navTOmain(BuildContext context){
     if(plat == 'web'){
       Navigator.pushReplacement(
         context,
@@ -859,8 +860,6 @@ class DronaService {
         ),
       );
     }
-
-
   }
 
   feedtestHistory(String id, var content) async {
