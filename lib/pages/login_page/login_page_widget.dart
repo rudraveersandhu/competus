@@ -50,58 +50,56 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
   Widget build(BuildContext context) {
     final screen_width = MediaQuery.of(context).size.width;
     print(screen_width);
-    return Scaffold(
-      key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-      body: Column(
-       mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            width: MediaQuery.sizeOf(context).width * 1.0,
-            height: MediaQuery.sizeOf(context).height * 1.0,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.fitWidth,
-                image: Image.asset(
-                  'assets/images/login_bg@2x.png',
-                ).image,
+    return SingleChildScrollView(
+      child: Scaffold(
+        key: scaffoldKey,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        body: Column(
+         mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: MediaQuery.sizeOf(context).width * 1.0,
+              height: MediaQuery.sizeOf(context).height * 1.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fitWidth,
+                  image: Image.asset(
+                    'assets/images/login_bg@2x.png',
+                  ).image,
+                ),
               ),
-            ),
-            child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(
-                        24.0, 100, 24.0, 20.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        if (Theme.of(context).brightness == Brightness.dark)
-                          Image.asset(
-                            'assets/blogo.png',
-                            width: 130.0,
-                            height: 120.0,
-                            fit: BoxFit.contain,
-                          ),
-                        if (!(Theme.of(context).brightness ==
-                            Brightness.dark))
-                          Image.asset(
-                            'assets/flogo.png',
-                            width: 130.0,
-                            height: 120.0,
-                            fit: BoxFit.fitWidth,
-                          ),
-                      ],
+              child: Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          24.0, 100, 24.0, 20.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (Theme.of(context).brightness == Brightness.dark)
+                            Image.asset(
+                              'assets/blogo.png',
+                              width: 130.0,
+                              height: 120.0,
+                              fit: BoxFit.contain,
+                            ),
+                          if (!(Theme.of(context).brightness ==
+                              Brightness.dark))
+                            Image.asset(
+                              'assets/flogo.png',
+                              width: 130.0,
+                              height: 120.0,
+                              fit: BoxFit.fitWidth,
+                            ),
+                        ],
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(
-                        24.0, 0.0, 24.0, 0.0),
-                    child: SingleChildScrollView(
+                    Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisSize: MainAxisSize.max,
@@ -110,26 +108,28 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: screen_width > 500 ? MainAxisAlignment.center : MainAxisAlignment.start,
                             children: [
-                              Text(
-                                'Welcome',
-                                style: FlutterFlowTheme.of(context)
-                                    .displaySmall
-                                    .override(
-                                      fontFamily: 'Lexend',
-                                      fontSize: 28.0,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.normal,
-                                    ),
+                              Padding(
+                                padding: screen_width > 500 ? EdgeInsets.only(left: 25) : EdgeInsets.only(left: 25,),
+                                child: Text(
+                                  'Welcome',
+                                  style: FlutterFlowTheme.of(context)
+                                      .displaySmall
+                                      .override(
+                                        fontFamily: 'Lexend',
+                                        fontSize: 28.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                ),
                               ),
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
+                            padding: screen_width > 500 ? EdgeInsets.only(top: 12) : EdgeInsets.only(left: 25,top: 12),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: screen_width > 500 ? MainAxisAlignment.center : MainAxisAlignment.start,
-
+      
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
@@ -147,92 +147,81 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             ),
                           ),
                           Container(
-                              width: screen_width > 500 ? 500 : null,
+                            constraints: BoxConstraints(
+                              maxWidth: screen_width > 500 ? 500 : MediaQuery.of(context).size.width - 50,
+                              maxHeight: 80.0, // Example height constraint
+                            ),
                             decoration: const BoxDecoration(),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 20.0, 0.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                               child: TextFormField(
-                                controller:
-                                _phoneController,
-                                focusNode:
-                                    _model.emailAddressLoginFocusNode,
+                                controller: _phoneController,
+                                focusNode: _model.emailAddressLoginFocusNode,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
-                                        fontFamily: 'Lexend',
-                                        letterSpacing: 0.0,
-                                      ),
-                                  hintText:
-                                      FFLocalizations.of(context).getText(
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
+                                  hintText: FFLocalizations.of(context).getText(
                                     'i7f18cve' /* Enter your phone number... */,
                                   ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodySmall
                                       .override(
-                                        fontFamily: 'Lexend',
-                                        letterSpacing: 0.0,
-                                      ),
+                                    fontFamily: 'Lexend',
+                                    letterSpacing: 0.0,
+                                  ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
-                                    borderRadius:
-                                        BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
-                                    borderRadius:
-                                        BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
-                                    borderRadius:
-                                        BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderSide: const BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
-                                    borderRadius:
-                                        BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(8.0),
                                   ),
                                   filled: true,
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  contentPadding:
-                                      const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 24.0, 20.0, 24.0),
-                                  prefixIcon: const Icon(
-                                    Icons.phone_android,
-                                  ),
+                                  fillColor: FlutterFlowTheme.of(context).secondaryBackground,
+                                  contentPadding: const EdgeInsetsDirectional.fromSTEB(20.0, 24.0, 20.0, 24.0),
+                                  prefixIcon: const Icon(Icons.phone_android),
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Lexend',
-                                      letterSpacing: 0.0,
-                                    ),
-                                validator: _model
-                                    .emailAddressLoginTextControllerValidator
-                                    .asValidator(context),
+                                  fontFamily: 'Lexend',
+                                  letterSpacing: 0.0,
+                                ),
+                                validator: _model.emailAddressLoginTextControllerValidator.asValidator(context),
                               ),
                             ),
                           ),
+      
                           screen_width > 500 ? Padding(
                             padding: const EdgeInsets.only(top: 20.0,right: 0),
                             child: FFButtonWidget(
-
+      
                               onPressed: () {
                                 _validateNumber(_phoneController.text);
                                 if(check){
@@ -245,7 +234,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       backgroundColor: Colors.red,
                                     ),
                                   );
-
+      
                                 }
                                 print('Button-Login pressed ...');
                               },
@@ -280,13 +269,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               : Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment:
-                            MainAxisAlignment.spaceBetween,
+                            MainAxisAlignment.center,
                             children: [
-                              Container(),
+      
                               Padding(
                                 padding: const EdgeInsets.only(top: 20.0,right: 0),
                                 child: FFButtonWidget(
-
+      
                                   onPressed: () {
                                     _validateNumber(_phoneController.text);
                                     if(check){
@@ -299,7 +288,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           backgroundColor: Colors.red,
                                         ),
                                       );
-
+      
                                     }
                                     print('Button-Login pressed ...');
                                   },
@@ -336,13 +325,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         ],
                       ),
                     ),
-                  ),
-
-                ],
+      
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

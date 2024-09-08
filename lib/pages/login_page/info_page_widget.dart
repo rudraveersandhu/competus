@@ -30,6 +30,9 @@ class _LoginPageWidgetState extends State<InfoPageWidget> {
   bool   verified = false;
   bool   rescheck = false;
 
+  String? _selectedGender ;
+
+
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -166,12 +169,14 @@ class _LoginPageWidgetState extends State<InfoPageWidget> {
                                             letterSpacing: 0.0,
                                           ),
                                       hintText:'Enter name here...',
+                                      prefix: Container(width: 10,),
                                       hintStyle:
                                       FlutterFlowTheme.of(context)
                                           .bodySmall
                                           .override(
                                             fontFamily: 'Lexend',
                                             letterSpacing: 0.0,
+
                                           ),
                                       enabledBorder: OutlineInputBorder(
                                         borderSide: const BorderSide(
@@ -180,6 +185,7 @@ class _LoginPageWidgetState extends State<InfoPageWidget> {
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
+
                                       ),
                                       focusedBorder: OutlineInputBorder(
                                         borderSide:
@@ -209,11 +215,12 @@ class _LoginPageWidgetState extends State<InfoPageWidget> {
                                       filled: true,
                                       fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
-                                              20.0, 24.0, 20.0, 24.0),
-                                      prefixIcon: const Icon(
-                                        CupertinoIcons.person,
+                                      contentPadding: EdgeInsets.only(left: 100),
+                                      prefixIcon: Padding(
+                                        padding: const EdgeInsets.only(left: 13.0),
+                                        child: const Icon(
+                                          CupertinoIcons.person,
+                                        ),
                                       ),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -244,6 +251,7 @@ class _LoginPageWidgetState extends State<InfoPageWidget> {
                                         letterSpacing: 0.0,
                                       ),
                                       hintText:'Email',
+                                      prefix: Container(width: 10,),
                                       hintStyle:
                                       FlutterFlowTheme.of(context)
                                           .bodySmall
@@ -290,8 +298,11 @@ class _LoginPageWidgetState extends State<InfoPageWidget> {
                                       contentPadding:
                                       const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 24.0, 20.0, 24.0),
-                                      prefixIcon: const Icon(
-                                        CupertinoIcons.mail,
+                                      prefixIcon: Padding(
+                                        padding: const EdgeInsets.only(left: 13.0),
+                                        child: const Icon(
+                                          CupertinoIcons.mail,
+                                        ),
                                       ),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -308,7 +319,7 @@ class _LoginPageWidgetState extends State<InfoPageWidget> {
                               ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 12.0, 0.0, 20.0),
+                                    0.0, 12.0, 0.0, 12.0),
                                 child: GestureDetector(
                                   onTap: (){
                                     setState(() {
@@ -342,6 +353,64 @@ class _LoginPageWidgetState extends State<InfoPageWidget> {
                                   ),
                                 ),
                               ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 20.0),
+                                child: Container(
+                                  height: 60,
+                                  width: MediaQuery.of(context).size.width - 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(7),
+                                    color: FlutterFlowTheme.of(context).secondaryBackground,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(13.0),
+                                        child: Icon(
+                                          CupertinoIcons.person_2,
+                                          color: Colors.grey.shade500,
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: DropdownButton<String>(
+                                          value: _selectedGender,
+                                          hint: Text(
+                                            "Select gender",
+                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                              fontFamily: 'Lexend',
+                                              letterSpacing: 0.0,
+                                            ),
+                                          ),
+                                          icon: Icon(Icons.arrow_drop_down),
+                                          isExpanded: true,
+                                          underline: SizedBox(),
+                                          items: <String>['Male', 'Female', 'Other']
+                                              .map<DropdownMenuItem<String>>((String value) {
+                                            return DropdownMenuItem<String>(
+                                              value: value,
+                                              child: Text(
+                                                value,
+                                                style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                  fontFamily: 'Lexend',
+                                                  letterSpacing: 0.0,
+
+                                                ),
+                                              ),
+                                            );
+                                          }).toList(),
+                                          onChanged: (String? newValue) {
+                                            setState(() {
+                                              _selectedGender = newValue!;
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+
                               FFButtonWidget(
                                 onPressed: () {
                                   if(_nameController.text != '' && _dobController.text != ''){
@@ -353,7 +422,9 @@ class _LoginPageWidgetState extends State<InfoPageWidget> {
                                               name:_nameController.text,
                                               email:_emailController.text,
                                               dob: _dobController.text,
-                                              number: widget.number, plat: widget.plat,
+                                              number: widget.number,
+                                              plat: widget.plat,
+                                              gender: _selectedGender
                                             ),
                                         transitionsBuilder: (context, animation, secondaryAnimation, child) {
                                           const curve = Curves.ease;

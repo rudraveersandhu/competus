@@ -424,33 +424,45 @@ class _QuestionScreenState extends State<QuestionScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          buildAnswerOption(
-                              context,
-                              question,
-                              selected_answer == 'A',
-                              'A)',
-                              currentAnswers[0]
+                          Padding(
+                            padding: const EdgeInsets.symmetric( horizontal: 30),
+                            child: buildAnswerOption(
+                                context,
+                                question,
+                                selected_answer == 'A',
+                                'A)',
+                                currentAnswers[0]
+                            ),
                           ),
-                          buildAnswerOption(
-                              context,
-                              question,
-                              selected_answer == 'B',
-                              'B)',
-                              currentAnswers[1]
+                          Padding(
+                            padding: const EdgeInsets.symmetric( horizontal: 30),
+                            child: buildAnswerOption(
+                                context,
+                                question,
+                                selected_answer == 'B',
+                                'B)',
+                                currentAnswers[1]
+                            ),
                           ),
-                          buildAnswerOption(
-                              context,
-                              question,
-                              selected_answer == 'C',
-                              'C)',
-                              currentAnswers[2]
+                          Padding(
+                            padding: const EdgeInsets.symmetric( horizontal: 30),
+                            child: buildAnswerOption(
+                                context,
+                                question,
+                                selected_answer == 'C',
+                                'C)',
+                                currentAnswers[2]
+                            ),
                           ),
-                          buildAnswerOption(
-                              context,
-                              question,
-                              selected_answer == 'D',
-                              'D)',
-                              currentAnswers[3]
+                          Padding(
+                            padding: const EdgeInsets.symmetric( horizontal: 30),
+                            child: buildAnswerOption(
+                                context,
+                                question,
+                                selected_answer == 'D',
+                                'D)',
+                                currentAnswers[3]
+                            ),
                           ),
                         ],
                       ),

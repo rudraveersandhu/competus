@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_drona/webApp/main_screen_web.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -50,7 +51,10 @@ class _SplineChartsState extends State<SplineCharts> {
                   ),
                 ],
                 color: Color(0xFF00968A),
-                borderRadius: BorderRadius.circular(8.0),
+                borderRadius: BorderRadius.circular(25.0),
+                border: Border.all(color: dark_mode ? Colors.white : Color(0xFF00968A),
+                  width: .5
+                ),
               ),
               child: Center(
                 child: Padding(

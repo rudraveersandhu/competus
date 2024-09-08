@@ -284,6 +284,12 @@
       "languageVersion": "3.3"
     },
     {
+      "name": "flutter_advanced_switch",
+      "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/flutter_advanced_switch-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_animate",
       "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/flutter_animate-4.5.0",
       "packageUri": "lib/",
@@ -336,6 +342,12 @@
       "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.21",
       "packageUri": "lib/",
       "languageVersion": "3.4"
+    },
+    {
+      "name": "flutter_radar_chart",
+      "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/flutter_radar_chart-0.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "flutter_shaders",
@@ -600,6 +612,18 @@
       "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/macos_window_utils-1.5.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
+    },
+    {
+      "name": "marquee_text",
+      "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/marquee_text-2.5.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "marquee_widget",
+      "rootUri": "file:///Users/rudraveersingh/.pub-cache/hosted/pub.dev/marquee_widget-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "matcher",
@@ -1094,7 +1118,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-08-27T06:27:32.751465Z",
+  "generated": "2024-09-04T18:32:11.313516Z",
   "generator": "pub",
   "generatorVersion": "3.4.1",
   "flutterRoot": "file:///Users/rudraveersingh/Desktop/flutter",

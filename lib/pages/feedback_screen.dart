@@ -302,7 +302,7 @@ class _FeedbackScreenState extends State<FeedbackScreen> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  MainScreen(plat: widget.plat,)
+                                  MainScreen()
                           ),
                         );
 

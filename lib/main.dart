@@ -20,6 +20,7 @@ import 'model/quiz_history_model.dart';
 import 'model/user_model.dart';
 
 String plat = ' ';
+String device = '';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,18 +34,23 @@ void main() async {
     if (Platform.isWindows) {
       WindowsDeviceInfo windowsInfo = await deviceInfoPlugin.windowsInfo;
       print(windowsInfo);
+      device = 'windows';
     } else if (Platform.isLinux) {
       LinuxDeviceInfo linuxInfo = await deviceInfoPlugin.linuxInfo;
       print(linuxInfo);
+      device = 'linux';
     } else if (Platform.isMacOS) {
       MacOsDeviceInfo macInfo = await deviceInfoPlugin.macOsInfo;
       print(macInfo);
+      device = 'macos';
     } else if (Platform.isAndroid) {
       AndroidDeviceInfo androidInfo = await deviceInfoPlugin.androidInfo;
       print(androidInfo);
+      device = 'android';
     } else if (Platform.isIOS) {
       IosDeviceInfo iosInfo = await deviceInfoPlugin.iosInfo;
       print(iosInfo);
+      device = 'ios';
     } else {
       // Handle other platforms, like embedded
       print("Unsupported platform");
@@ -52,9 +58,12 @@ void main() async {
   } else {
     // Web-specific code
     plat = 'web';
-    print(plat);
+    print("Platform: $plat");
+    print("Device: $device");
     // You can use browser-related checks or web-specific implementations here.
   }
+  print("Platform: $plat");
+  print("Device: $device");
 
   await FlutterFlowTheme.initialize();
   await authManager.initialize();
@@ -62,52 +71,44 @@ void main() async {
   await Hive.initFlutter();
   var box = await Hive.openBox<QuizHistory>('quizHistoryBox');
 
-  if(plat == 'web' ){
-    runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider<UserModel>(
-            create: (context) => UserModel(),
-          ),
-          ChangeNotifierProvider<AnswerModel>(
-            create: (context) => AnswerModel(),
-          ),
-          ChangeNotifierProvider<Quizhistory>(
-            create: (context) => Quizhistory(),
-          ),
-          ChangeNotifierProvider<QandaHistoryModel>(
-            create: (context) => QandaHistoryModel(),
-          ),
-        ],
-        child: const MyWebApp(),
-      ),
-    );
-  } else {
-    runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider<UserModel>(
-            create: (context) => UserModel(),
-          ),
-          ChangeNotifierProvider<AnswerModel>(
-            create: (context) => AnswerModel(),
-          ),
-          ChangeNotifierProvider<Quizhistory>(
-            create: (context) => Quizhistory(),
-          ),
-          ChangeNotifierProvider<QandaHistoryModel>(
-            create: (context) => QandaHistoryModel(),
-          ),
-        ],
-        child: const MyApp(),
-      ),
-    );
-
-  }
-
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<UserModel>(
+          create: (context) => UserModel(),
+        ),
+        ChangeNotifierProvider<AnswerModel>(
+          create: (context) => AnswerModel(),
+        ),
+        ChangeNotifierProvider<Quizhistory>(
+          create: (context) => Quizhistory(),
+        ),
+        ChangeNotifierProvider<QandaHistoryModel>(
+          create: (context) => QandaHistoryModel(),
+        ),
+      ],
+      child: MyAppNavigator(),
+    ),
+  );
 
 }
 
+class MyAppNavigator extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Get screen width
+    double screenWidth = MediaQuery.of(context).size.width;
+
+    // Use screen width to decide which app to show
+    if (screenWidth > 700) {
+      // Web or larger screen
+      return const MyWebApp();
+    } else {
+      // Mobile or smaller screen
+      return const MyApp();
+    }
+  }
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

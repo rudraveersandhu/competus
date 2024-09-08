@@ -22,6 +22,7 @@ class ExamSelectionScreen extends StatefulWidget {
   final String dob;
   final String number;
   final String plat;
+  final String? gender;
 
   const ExamSelectionScreen({
     super.key,
@@ -31,6 +32,7 @@ class ExamSelectionScreen extends StatefulWidget {
     required this.dob,
     required this.number,
     required this.plat,
+    required this.gender,
   });
 
   @override
@@ -281,6 +283,9 @@ class _ExamSelectionScreenState extends State<ExamSelectionScreen> with TickerPr
                             onPressed: () async {
                               List<QuizHistory> quizHistory = [];
                               if (_selectedSubject.isNotEmpty) {
+                                var profile_url = '';
+
+                                widget.gender == 'Male' ? profile_url = 'https://i.postimg.cc/vH6Rq3qQ/male.jpg' : profile_url = 'https://i.postimg.cc/YCc5JYZQ/female.jpg';
         
                                 await updateDataOnQuillDb(
                                     widget.name,
@@ -289,7 +294,7 @@ class _ExamSelectionScreenState extends State<ExamSelectionScreen> with TickerPr
                                     widget.number,
                                     _selectedSubject,
                                     "",
-                                    "https://www.shareicon.net/data/128x128/2016/05/24/770126_man_512x512.png",
+                                    profile_url,
                                     quizHistory
                                 );
         

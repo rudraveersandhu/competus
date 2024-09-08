@@ -305,7 +305,7 @@ class _SubSectionSelectionState extends State<SubSectionSelection> with TickerPr
                                       Navigator.pushReplacement(
                                         context,
                                         PageRouteBuilder(
-                                          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(plat: widget.plat,),
+                                          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(),
                                           transitionsBuilder: (context, animation, secondaryAnimation, child) {
                                             const curve = Curves.ease;
                                             var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));

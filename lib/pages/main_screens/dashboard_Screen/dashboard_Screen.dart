@@ -1,13 +1,9 @@
 import 'package:animated_flip_counter/animated_flip_counter.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_circular_progress_bar/simple_circular_progress_bar.dart';
-
-import '../../../model/qanda_history_model.dart';
 import '../../../model/user_model.dart';
 import '../../../new_screen.dart';
 import '../../../spline_charts.dart';
-import '/components/pause_card/pause_card_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,7 +13,14 @@ import 'm_y_card_model.dart';
 export 'm_y_card_model.dart';
 
 class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({super.key});
+  final String plat;
+  final String device;
+
+  DashboardScreen({
+    super.key,
+    required this.plat,
+    required this.device,
+  });
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -231,7 +234,8 @@ class _DashboardScreenState extends State<DashboardScreen>
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Welcome Back,',
+                              Text(
+                                'Welcome Back,',
                                 style: FlutterFlowTheme
                                     .of(context)
                                     .displaySmall
@@ -241,6 +245,7 @@ class _DashboardScreenState extends State<DashboardScreen>
                                     fontSize: height > 700 ? 30: 23
                                 ),
                               ),
+
                               Text('${model.name}',
                                 style: FlutterFlowTheme
                                     .of(context)
@@ -307,7 +312,7 @@ class _DashboardScreenState extends State<DashboardScreen>
                               children: [
                                 Container(
                                   width: MediaQuery.of(context).size.width * 0.92,
-                                  height: height > 700 ? height * 0.2 : height * 0.25 ,
+                                  height: height * 0.25 ,
                                   decoration: BoxDecoration(
                                     boxShadow: const [
                                       BoxShadow(
@@ -351,9 +356,9 @@ class _DashboardScreenState extends State<DashboardScreen>
                                             mainAxisAlignment: MainAxisAlignment.start,
                                             crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
-                                              SizedBox(height: 50,),
-                                              Padding(
-                                                padding: const EdgeInsets.only(left: 20.0,top: 10),
+                                              const SizedBox(height: 50,),
+                                              const Padding(
+                                                padding: EdgeInsets.only(left: 20.0,top: 10),
                                                 child: Text(
                                                   "National Rank:",
                                                   style: TextStyle(

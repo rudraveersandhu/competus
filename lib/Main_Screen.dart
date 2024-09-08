@@ -10,8 +10,8 @@ import 'package:my_drona/pages/test_history/test_history.dart';
 import 'main.dart';
 
 class MainScreen extends StatefulWidget {
-  final String plat;
-  MainScreen({super.key, required this.plat});
+
+  MainScreen({super.key});
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -35,15 +35,7 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
       alignment: Alignment.center,
       key: ValueKey<int>(isSelected ? index : -index),
       children: [
-        // if (isSelected)
-        //   Container(
-        //     width: 35,
-        //     height: 35,
-        //     decoration: BoxDecoration(
-        //       color: Colors.white70,
-        //       shape: BoxShape.circle,
-        //     ),
-        //   ),
+
         Icon(
           icon,
           color: isSelected ? Colors.white : Colors.white70,
@@ -69,15 +61,20 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
   Widget _getPage(int index) {
     switch (index) {
       case 0:
-        return const DashboardScreen();
+        return  DashboardScreen(
+          plat: plat,
+          device: device,
+        );
       case 1:
         return const QuizPracticeScreen();
       case 2:
         return const TestHistory();
       case 3:
-        return MYProfilePageWidget(plat: widget.plat,);
+        return MYProfilePageWidget(plat: plat,);
       default:
-        return const DashboardScreen();
+        return  DashboardScreen(
+          plat: plat, device: device,
+        );
     }
   }
 
@@ -91,10 +88,10 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
 
         // Bottom navigation bar
         Positioned(
-          top: MediaQuery.of(context).size.height * .89,
+          top: MediaQuery.of(context).size.height * .9,
             left:  10,
             right:  10,
-            bottom: kBottomNavigationBarHeight/1.5,
+            bottom: plat == 'web' ? 20 : kBottomNavigationBarHeight/1.6,
             child: Container(
               height: 60,
               //width: MediaQuery.of(context).size.width - 50,
@@ -113,10 +110,11 @@ class _MainScreenState extends State<MainScreen> with SingleTickerProviderStateM
         ),
 
         Positioned(
-          bottom: 0,
-          top: MediaQuery.of(context).size.height * .89,
+
+          top: MediaQuery.of(context).size.height * .895,
           left: 0,
           right: 0,
+          bottom: plat == 'web' ? 18 : 0,
           child: Theme(
             data: Theme.of(context).copyWith(
               splashColor: Colors.transparent,

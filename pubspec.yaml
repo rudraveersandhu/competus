@@ -65,7 +65,7 @@ dependencies:
   otpless_flutter: ^2.1.6
   animated_flip_counter: ^0.3.4
   simple_circular_progress_bar: ^1.0.2
-  syncfusion_flutter_charts: ^26.2.5+1
+  syncfusion_flutter_charts: ^26.2.5+1   #used
   animated_text_kit: ^4.2.2
   animated_toggle_switch: ^0.8.2
   #table_calendar: ^3.1.2
@@ -80,6 +80,10 @@ dependencies:
   loading_animations: ^2.2.0
   flutter_slidable: ^3.1.1
   device_info_plus: ^10.1.2
+  flutter_advanced_switch: ^3.1.0
+  flutter_radar_chart: ^0.2.1
+  marquee_text: ^2.5.0+1
+  marquee_widget: ^1.2.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

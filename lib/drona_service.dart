@@ -12,6 +12,7 @@ import 'package:my_drona/pages/subjectData.dart';
 import 'package:my_drona/webApp/main_screen_web.dart';
 import 'package:provider/provider.dart';
 import 'package:http/http.dart' as http;
+import 'main.dart';
 import 'model/quiz_history_model.dart';
 import 'model/stream_model.dart';
 import 'model/subject.dart';
@@ -171,20 +172,7 @@ class DronaService {
       var x = await getUserData( userId );
       await fetchAndGetData( x, context );
 
-      Navigator.pushReplacement( context ,
-        PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(plat: plat,),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            const curve = Curves.ease;
-            var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
-            return FadeTransition(
-              opacity: fadeAnimation,
-              child: child,
-            );
-          },
-          transitionDuration: const Duration(milliseconds: 700),
-        ),
-      );
+      navTOmain(context);
       return true;
     }else{
       print("New user identified");
@@ -322,6 +310,7 @@ class DronaService {
   Future<List<String>> getTopicsForSubject(String subjectName) async {
     try {
       List<SubjectData> subjects = await fetchSubjects();
+      print("Subjects: $subjects");
 
       // Iterate through the subject data to find the requested subject.
       for (var subjectData in subjects) {
@@ -516,8 +505,8 @@ class DronaService {
           print("Userdata_1: $x");
           await feedUserModel_ThenHomeScreen(context,x);
         }
-        else if(verified && exists == false)
-        {
+        else if(verified && exists == false) {
+
           print("going to the info screen");
           Navigator.pushReplacement(
             context,
@@ -728,25 +717,7 @@ class DronaService {
       weakest_subject: "Less-Data",
     );
 
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        pageBuilder: (context, animation, secondaryAnimation) => MainScreen(plat: plat,),
-        transitionsBuilder: (context, animation, secondaryAnimation, child) {
-          const curve = Curves.ease;
-          var fadeAnimation = animation.drive(
-              Tween(begin: 0.0, end: 1.0).chain(
-                  CurveTween(curve: curve)));
-
-          return FadeTransition(
-            opacity: fadeAnimation,
-            child: child,
-          );
-        },
-        transitionDuration:
-        const Duration(milliseconds: 700), // Adjust duration to make it slower
-      ),
-    );
+    navTOmain(context);
 
 
   }
@@ -817,33 +788,57 @@ class DronaService {
     }
   }
 
-  navTOmain(BuildContext context){
-    if(plat == 'web'){
+  navTOmain(BuildContext context) {
+    var  width = MediaQuery.of(context).size.width;
+
+    if(width > 700 ) {
+
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => MainScreenWeb(plat: plat,),
+          pageBuilder: (context, animation, secondaryAnimation) => MainScreenWeb(
+          ),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            const curve = Curves.ease;
-            var fadeAnimation = animation.drive(
-                Tween(begin: 0.0, end: 1.0).chain(
-                    CurveTween(curve: curve)));
 
-            return FadeTransition(
-              opacity: fadeAnimation,
-              child: child,
-            );
+            const curve = Curves.ease;
+
+            var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
+
+            return FadeTransition(opacity: fadeAnimation, child: child,);
+
           },
-          transitionDuration:
-          const Duration(milliseconds: 700), // Adjust duration to make it slower
+          transitionDuration: const Duration(milliseconds: 700), // Adjust duration to make it slower
         ),
       );
 
-    } else {
+    }
+    else if( width < 700 ) {
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
-          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(plat: plat,),
+          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(
+
+          ),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+
+            const curve = Curves.ease;
+
+            var fadeAnimation = animation.drive(Tween(begin: 0.0, end: 1.0).chain(CurveTween(curve: curve)));
+
+            return FadeTransition(opacity: fadeAnimation, child: child,);
+
+          },
+          transitionDuration: const Duration(milliseconds: 700), // Adjust duration to make it slower
+        ),
+      );
+
+    }
+
+    else {
+      Navigator.pushReplacement(
+        context,
+        PageRouteBuilder(
+          pageBuilder: (context, animation, secondaryAnimation) => MainScreen(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             const curve = Curves.ease;
             var fadeAnimation = animation.drive(
@@ -860,6 +855,7 @@ class DronaService {
         ),
       );
     }
+
   }
 
   feedtestHistory(String id, var content) async {

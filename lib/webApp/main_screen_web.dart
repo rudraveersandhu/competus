@@ -1,66 +1,73 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_drona/pages/main_screens/dashboard_Screen/dashboard_Screen.dart';
+import 'package:flutter_advanced_switch/flutter_advanced_switch.dart';
 import 'package:my_drona/webApp/screens/ProfilePageWeb.dart';
 import 'package:my_drona/webApp/screens/dashboardScreenWeb.dart';
+import 'package:my_drona/webApp/screens/feedbackScreenWeb.dart';
 import 'package:my_drona/webApp/screens/quizPracticeScreenWeb.dart';
+import 'package:my_drona/webApp/screens/settingScreenWeb.dart';
 import 'package:my_drona/webApp/screens/testHistoryScreenWeb.dart';
 
+import '../flutter_flow/flutter_flow_theme.dart';
 import '../main.dart';
-
+bool dark_mode =false;
 class MainScreenWeb extends StatefulWidget {
-  final String plat;
-  MainScreenWeb({super.key, required this.plat});
+
+
+  MainScreenWeb({super.key,
+
+  });
 
   @override
   State<MainScreenWeb> createState() => _MainScreenWebState();
 }
 
-class _MainScreenWebState extends State<MainScreenWeb> with SingleTickerProviderStateMixin  {
-
-  late AnimationController _controller;
-  late Animation<double> _animation;
-
+class _MainScreenWebState extends State<MainScreenWeb> with SingleTickerProviderStateMixin {
   int _currentIndex = 0;
+
+
+  ValueNotifier<bool> isDarkMode = ValueNotifier(false);
 
   void _onTabTapped(int index) {
     setState(() {
       _currentIndex = index;
-    });
+    }
+    );
   }
 
-  Widget _buildIcon(IconData icon, bool isSelected, int index) {
-    return Stack(
-      alignment: Alignment.center,
-      key: ValueKey<int>(isSelected ? index : -index),
-      children: [
-        if (isSelected)
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              shape: BoxShape.circle,
-            ),
+  Widget _buildOption(IconData icon, String option, int index, Color textColor) {
+    bool isSelected = _currentIndex == index;
+
+    return Padding(
+      padding: const EdgeInsets.only(left: 10.0,right: 10,bottom: 5),
+      child: GestureDetector(
+        onTap: () => _onTabTapped(index),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 180),
+          curve: Curves.easeInOut,
+          decoration: BoxDecoration(
+            color: isSelected ? Color(0xFF00968A) : Colors.transparent,
+            borderRadius: BorderRadius.circular(10)
           ),
-        Icon(
-          icon,
-          color: isSelected ? Colors.green : Colors.white,
+          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
+          child: Row(
+            children: [
+              Icon(
+                icon,
+                color: isSelected ? textColor : Colors.grey.shade600,
+              ),
+              const SizedBox(width: 15),
+              Text(
+                option,
+                style: TextStyle(
+                  color: isSelected ? textColor : Colors.grey.shade600,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+            ],
+          ),
         ),
-      ],
-    );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(milliseconds: 350),
-      vsync: this,
-    );
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeInOut,
+      ),
     );
   }
 
@@ -73,7 +80,12 @@ class _MainScreenWebState extends State<MainScreenWeb> with SingleTickerProvider
       case 2:
         return const TestHistoryScreenWeb();
       case 3:
-        return ProfileWeb(plat: widget.plat,);
+        return ProfileWeb(plat: plat);
+      case 4:
+        return FeedbackScreenWeb();
+      case 5:
+        return SettingScreenWeb();
+
       default:
         return const DashboardScreenWeb();
     }
@@ -81,111 +93,200 @@ class _MainScreenWebState extends State<MainScreenWeb> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    return Stack(
-      children: [
-        // Main content
-        _getPage(_currentIndex),
+    return ValueListenableBuilder<bool>(
+        valueListenable: isDarkMode,
+        builder: (context, isDark, _) {
+      final theme = isDark ? ThemeData.dark() : ThemeData.light();
+      return Theme(
+          data: theme,
+          child: Scaffold(
+      body: Row(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.19,
+            color: isDark ? FlutterFlowTheme
+                .of(context).darkBackground : FlutterFlowTheme.of(context).primaryBackground,  // Background color for the sidebar
+            child: Column(
+              children: [
 
-        // Bottom navigation bar
-        Positioned(
-            left: MediaQuery.of(context).size.width * 0.3 ,
-            right: MediaQuery.of(context).size.width * 0.3 ,
-            bottom: 45 ,
-            child: Container(
-              height: 70,
-              width: MediaQuery.of(context).size.width - 50,
-              decoration: BoxDecoration(
-                color: Color(0xFF00968A),
-                borderRadius: BorderRadius.circular(50),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black38,
-                    blurRadius: 10,
-                    offset: Offset(0, 0),
+                Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Image.asset(
+                    dark_mode
+                        ? 'assets/blogo.png'
+                        : 'assets/flogo.png',
+                    width: 110.0,
+                    height: 100.0,
                   ),
-                ],
-              ),
-            )
-        ),
-        Positioned(
-          left: MediaQuery.of(context).size.width * 0.3 ,
-          right: MediaQuery.of(context).size.width * 0.3 ,
-          bottom: 45 ,
-          child: AnimatedBuilder(
-            animation: _animation,
-            builder: (context, child) {
-              return Transform.translate(
-                offset: Offset(0, _animation.value * 120),
-                child: child,
-              );
-            },
-            child: Theme(
-              data: Theme.of(context).copyWith(
-                splashColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                bottomNavigationBarTheme: BottomNavigationBarThemeData(
-                  backgroundColor: Colors.transparent,
-                  elevation: 0,
-                  type: BottomNavigationBarType.fixed,
                 ),
-              ),
-              child: BottomNavigationBar(
-                currentIndex: _currentIndex,
-                onTap: _onTabTapped,
-                type: BottomNavigationBarType.fixed,
-                selectedItemColor: Color(0xFF00968A),
-                unselectedItemColor: Colors.white,
-                showSelectedLabels: false,
-                showUnselectedLabels: false,
-                elevation: 0,
-                items: [
-                  BottomNavigationBarItem(
-                    icon: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 100),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(child: child, scale: animation);
-                      },
-                      child: _buildIcon(CupertinoIcons.home, _currentIndex == 0, 0),
-                    ),
-                    label: 'Home',
+
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildOption(CupertinoIcons.home, 'Home', 0, Colors.white),
+                      _buildOption(CupertinoIcons.book, 'Quiz Practice', 1, Colors.white),
+                      _buildOption(CupertinoIcons.calendar, 'Quiz History', 2, Colors.white),
+                      _buildOption(CupertinoIcons.person, 'Profile', 3, Colors.white),
+                      //_buildOption(CupertinoIcons.settings, 'Settings', 4, Colors.white),
+                      SizedBox( height: 10 ),
+
+                      Divider(
+                        height: 1,
+                      ),
+
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              children: [
+
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 30.0,right: 10,bottom: 5,top: 20),
+                                  child: Container(
+                                    child: Row(
+
+                                      children: [
+                                        Icon(
+                                          CupertinoIcons.question_circle,
+                                          color: Colors.grey.shade600,
+                                        ),
+                                        const SizedBox(width: 15),
+                                        Text(
+                                          "Help Center",
+                                          style: TextStyle(
+                                            color: Colors.grey.shade600,
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                        ),
+                                      ],
+                                    ),),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 15.0),
+                                  child: _buildOption(CupertinoIcons.rocket, 'Feedback', 4, Colors.white),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 8.0),
+                                  child: _buildOption(CupertinoIcons.settings, 'Settings', 5, Colors.white),
+                                ),
+
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    width: 250,
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(25),
+                                      color: Color(0xFF00968A),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: 250,
+                                    height: 150,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(25),
+                                      image: DecorationImage(
+                                        image: AssetImage("assets/texture.jpeg"), // Replace with your image path
+                                        fit: BoxFit.cover,
+                                        colorFilter: ColorFilter.mode(
+                                          Colors.black.withOpacity(0.2), // Adjust opacity here
+                                          BlendMode.dstATop,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+
+                                  Positioned(
+                                    bottom: 20,
+                                    right: 20,
+                                    child: Column(
+                                      children: [
+                                        Container(
+                                          width: 130,
+                                          height: 30,
+                                          decoration: BoxDecoration(
+                                            borderRadius: BorderRadius.circular(13),
+                                            color: isDark ? FlutterFlowTheme
+                                                .of(context).darkBackground : FlutterFlowTheme.of(context).primaryBackground,
+                                          ),
+                                          child: Center(
+                                              child: Text("Upgrade Plan",
+                                                style: TextStyle(fontSize: 12,fontWeight: FontWeight.w300),
+                                              ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+
+                            Padding(
+                              padding: const EdgeInsets.only(left: 30.0,right: 10,bottom: 50),
+                              child: Container(
+                                child: Row(
+
+                                  children: [
+                                    Icon(
+                                      CupertinoIcons.moon_stars,
+                                      color: Colors.grey.shade600,
+                                    ),
+                                    const SizedBox(width: 15),
+                                    Text(
+                                      "Dark mode",
+                                      style: TextStyle(
+                                        color: Colors.grey.shade600,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    ),
+
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 30),
+                                      child: AdvancedSwitch(
+                                          controller: isDarkMode,
+                                          onChanged: (value){
+                                            setState(() {
+                                              dark_mode = value;
+                                            });
+                                            print("Dark mode: $dark_mode");
+                                          },
+                                          activeColor: Color(0xFF005C54)
+                                      ),
+                                    )
+                                  ],
+                                ),),
+                            ),
+
+                          ],
+                        ),
+                      ),
+
+
+
+
+
+                    ],
                   ),
-                  BottomNavigationBarItem(
-                    icon: AnimatedSwitcher(
-                      duration: Duration(milliseconds: 300),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(child: child, scale: animation);
-                      },
-                      child: _buildIcon(CupertinoIcons.search, _currentIndex == 1, 1),
-                    ),
-                    label: 'Search',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: AnimatedSwitcher(
-                      duration: Duration(milliseconds: 300),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(child: child, scale: animation);
-                      },
-                      child: _buildIcon(CupertinoIcons.book, _currentIndex == 2, 2),
-                    ),
-                    label: 'Your Library',
-                  ),
-                  BottomNavigationBarItem(
-                    icon: AnimatedSwitcher(
-                      duration: Duration(milliseconds: 300),
-                      transitionBuilder: (Widget child, Animation<double> animation) {
-                        return ScaleTransition(child: child, scale: animation);
-                      },
-                      child: _buildIcon(CupertinoIcons.person_alt, _currentIndex == 3, 3),
-                    ),
-                    label: 'Settings',
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        )
-      ],
+          const VerticalDivider(width: 1, color: Colors.grey),
+          Expanded(
+            child: _getPage(_currentIndex),
+          ),
+        ],
+      ),
+    ),
+      );
+        }
     );
   }
 }

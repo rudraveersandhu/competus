@@ -33,11 +33,14 @@ class _QuestionBlockState extends State<QuestionBlock> {
             width: MediaQuery.of(context).size.width-120,
             child: Align(
               alignment: Alignment.centerLeft,
-              child: Text("${widget.number} ${widget.Question}",
-                style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 16,
-                    color: widget.text_color
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Text("${widget.number} ${widget.Question}",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w300,
+                      fontSize: 16,
+                      color: widget.text_color
+                  ),
                 ),
               ),
             ),
