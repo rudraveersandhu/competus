@@ -1,0 +1,16 @@
+# macOS system files
+.DS_Store
+
+# Dart & Flutter files
+.dart_tool/
+build/
+
+# iOS and Android system files
+ios/.DS_Store
+android/.DS_Store
+
+# Flutter-generated assets
+*.ipa
+
+# Generated IDE config files
+.idea/
